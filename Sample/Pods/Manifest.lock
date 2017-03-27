@@ -1,0 +1,12 @@
+PODS:
+  - AttributesBuilder (0.0.1)
+
+DEPENDENCIES:
+  - AttributesBuilder
+
+SPEC CHECKSUMS:
+  AttributesBuilder: 70c44e6b5ae95ab9e2f63db2b857d7119d4a2a2d
+
+PODFILE CHECKSUM: f373deeffe1ddb89ddeea32a3f8193dcec0da8b9
+
+COCOAPODS: 1.2.0

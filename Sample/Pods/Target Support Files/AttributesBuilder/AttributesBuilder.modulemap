@@ -1,0 +1,6 @@
+framework module AttributesBuilder {
+  umbrella header "AttributesBuilder-umbrella.h"
+
+  export *
+  module * { export * }
+}
