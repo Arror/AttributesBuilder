@@ -1,1 +1,3 @@
 # AttributesBuilder
+# Installation
+    pod 'AttributesBuilder'
