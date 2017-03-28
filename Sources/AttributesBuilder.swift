@@ -11,7 +11,7 @@ extension String: AttributesNamespaceWrappable {}
 
 extension NSAttributedString: AttributesNamespaceWrappable {}
 
-extension ValueWrappable where ValueType == String {
+extension AttributesNamespaceValueWrappable where ValueType == String {
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
@@ -21,7 +21,7 @@ extension ValueWrappable where ValueType == String {
     }
 }
 
-extension ValueWrappable where ValueType: NSAttributedString {
+extension AttributesNamespaceValueWrappable where ValueType: NSAttributedString {
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         

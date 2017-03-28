@@ -9,5 +9,8 @@ public protocol AttributesNamespaceWrappable {
 
 extension AttributesNamespaceWrappable {
     
-    public var rs: ValueWrapper<Self> { return ValueWrapper<Self>(self) }
+    public var rs: AttributesNamespaceValueWrapper<Self> {
+        
+        return AttributesNamespaceValueWrapper<Self>(self)
+    }
 }

@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol ValueWrappable {
+public protocol AttributesNamespaceValueWrappable {
     
     associatedtype ValueType
     
@@ -9,7 +9,7 @@ public protocol ValueWrappable {
     init(_ value: ValueType)
 }
 
-public final class ValueWrapper<Value>: ValueWrappable {
+public final class AttributesNamespaceValueWrapper<Value>: AttributesNamespaceValueWrappable {
     
     public let value: Value
     
