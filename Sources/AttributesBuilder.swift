@@ -27,16 +27,22 @@ extension AttributesNamespaceValueWrappable where ValueType: NSAttributedString 
         
         let s = NSMutableAttributedString(attributedString: self.value)
         
-        let r: CountableRange<Int> = {
-            let full = 0..<self.value.string.characters.count
-            if let range = range {
-                return full.clamped(to: range)
-            } else {
-                return full
-            }
-        }()
+        let fullRange = 0..<self.value.string.characters.count
         
-        s.addAttributes(builder.attributes, range: NSRange.from(countableRange: r))
+        let ranges: [CountableRange<Int>] = [range ?? fullRange]
+        
+        return self.rendered(by: builder, ranges: ranges)
+    }
+    
+    func rendered(by builder: AttributesBuilder, ranges: [CountableRange<Int>] = []) -> NSAttributedString {
+        
+        let s = NSMutableAttributedString(attributedString: self.value)
+        
+        let fullRange = 0..<self.value.string.characters.count
+        
+        ranges.forEach { range in
+            s.addAttributes(builder.attributes, range: NSRange.from(countableRange: fullRange.clamped(to: range)))
+        }
         
         return s
     }
