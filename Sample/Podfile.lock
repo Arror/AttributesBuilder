@@ -2,11 +2,15 @@ PODS:
   - AttributesBuilder (0.0.1)
 
 DEPENDENCIES:
-  - AttributesBuilder
+  - AttributesBuilder (from `../../AttributesBuilder`)
+
+EXTERNAL SOURCES:
+  AttributesBuilder:
+    :path: ../../AttributesBuilder
 
 SPEC CHECKSUMS:
-  AttributesBuilder: 70c44e6b5ae95ab9e2f63db2b857d7119d4a2a2d
+  AttributesBuilder: 3314460ad907bd95f977a6a6dd40a1ce392e93dc
 
-PODFILE CHECKSUM: f373deeffe1ddb89ddeea32a3f8193dcec0da8b9
+PODFILE CHECKSUM: 04185acc585e849936aa90c45b3946c78af029be
 
 COCOAPODS: 1.2.0

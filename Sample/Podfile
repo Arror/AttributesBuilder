@@ -3,5 +3,5 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'Sample' do
-  pod 'AttributesBuilder'
+    pod 'AttributesBuilder', :path => '../../AttributesBuilder'
 end
