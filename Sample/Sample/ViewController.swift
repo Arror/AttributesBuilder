@@ -21,11 +21,19 @@ class ViewController: UIViewController {
             .font(.boldSystemFont(ofSize: 14.0))
             .characterSpacing(8)
         
-        let builder2 = builder.copied.color(.red)
+        let builder2 = builder
+            .copied
+            .color(.red)
+        
+        let builder3 = builder
+            .copied
+            .color(.orange)
+            .font(.systemFont(ofSize: 8.0))
         
         self.contentLabel.attributedText = "Hallo, 我只是一个Label而已."
             .rs.rendered(by: builder)
             .rs.rendered(by: builder2, range: 0..<6)
+            .rs.rendered(by: builder3, regexPattern: "Label")
     }
 }
 
