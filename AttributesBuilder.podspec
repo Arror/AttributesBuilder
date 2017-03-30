@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'AttributesBuilder'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.license = 'MIT'
   s.summary = 'Attributes builder.'
   s.homepage = 'https://github.com/Arror/AttributesBuilder'
