@@ -16,7 +16,7 @@
 		70CEDA10DC438F258F5BBFDE47EF1867 /* AttributesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CE7A6E95F3C5EEDA6972D04D9B3FB6 /* AttributesBuilder.swift */; };
 		80576BDDB6B6F4B96BCA34D8DEBAE679 /* AttributesBuilder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B4144F80BC2759A4FB0E196B33819924 /* AttributesBuilder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86F7631B2FE75925E87C9081AB5A53C3 /* AttributesBuilderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78F3221183055DC325E9943853582E9 /* AttributesBuilderUtils.swift */; };
-		9027CF6B71E516C567A4AA6C38137330 /* AttributesNamespaceWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrapper.swift */; };
+		9027CF6B71E516C567A4AA6C38137330 /* AttributesNamespaceWrappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrappable.swift */; };
 		AF0ABF3948C7A9CDEA525B845D1C2F3C /* Pods-Sample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF50723EE695E440CDA214119EF2C70 /* Pods-Sample-dummy.m */; };
 /* End PBXBuildFile section */
 
@@ -45,7 +45,7 @@
 		630DD76D417453483F37DBAE838D5518 /* Pods-Sample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Sample-umbrella.h"; sourceTree = "<group>"; };
 		6D65DC53E876D33B73CCFEE44C379EE1 /* Pods-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		735E5204C40E887244F2B75BCCDF2572 /* Pods-Sample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Sample.modulemap"; sourceTree = "<group>"; };
-		8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AttributesNamespaceWrapper.swift; sourceTree = "<group>"; };
+		8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrappable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AttributesNamespaceWrappable.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9C896AB03AD02637A2108FF27D207683 /* Pods-Sample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sample-frameworks.sh"; sourceTree = "<group>"; };
 		A21D9B3C2775E7C503E601A5737980FB /* Pods-Sample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sample-acknowledgements.markdown"; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			children = (
 				2533F6BB6C70ACCBDB3FF3F1FAAD45C6 /* AttributesAdmissible.swift */,
 				59CE7A6E95F3C5EEDA6972D04D9B3FB6 /* AttributesBuilder.swift */,
-				8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrapper.swift */,
+				8548055F7548CC817DF7AE8DEF3A3D08 /* AttributesNamespaceWrappable.swift */,
 				D78F3221183055DC325E9943853582E9 /* AttributesBuilderUtils.swift */,
 				DD8A672612B52CB9A41D50F4DF578CA0 /* AttributesNamespaceValueWrapper.swift */,
 			);
@@ -284,7 +284,7 @@
 				6E68E8D361E8E00F4B0942FF90F44C8A /* AttributesAdmissible.swift in Sources */,
 				3F2A2A9B334BE497C5375E402EE3E5D6 /* AttributesBuilder-dummy.m in Sources */,
 				70CEDA10DC438F258F5BBFDE47EF1867 /* AttributesBuilder.swift in Sources */,
-				9027CF6B71E516C567A4AA6C38137330 /* AttributesNamespaceWrapper.swift in Sources */,
+				9027CF6B71E516C567A4AA6C38137330 /* AttributesNamespaceWrappable.swift in Sources */,
 				86F7631B2FE75925E87C9081AB5A53C3 /* AttributesBuilderUtils.swift in Sources */,
 				372FC3E2CDBEEAC08480CCC0E6333452 /* AttributesNamespaceValueWrapper.swift in Sources */,
 			);
