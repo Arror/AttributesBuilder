@@ -23,6 +23,7 @@ extension String {
 }
 
 public func +(lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+    
     let s = NSMutableAttributedString(attributedString: lhs)
     s.append(rhs)
     return s

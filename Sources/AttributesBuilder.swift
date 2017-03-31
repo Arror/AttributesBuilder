@@ -1,17 +1,109 @@
 import UIKit
 
-public final class AttributesBuilder: AttributesAdmissible {
+public final class AttributesBuilder {
     
     var attributes: [String: Any] = [:]
     
     public init() {}
 }
 
-extension String: AttributesNamespaceWrappable {}
+extension AttributesBuilder {
+    
+    convenience init(attributes: [String: Any]) {
+        self.init()
+        self.attributes = attributes
+    }
+    
+    subscript(key: String) -> Any? {
+        set {
+            self.attributes[key] = newValue
+        }
+        get {
+            return self.attributes[key]
+        }
+    }
+}
 
-extension NSAttributedString: AttributesNamespaceWrappable {}
+extension AttributesBuilder {
+    
+    public var copied: AttributesBuilder { return AttributesBuilder(attributes: self.attributes) }
+}
 
-extension AttributesNamespaceValueWrapper where Value == String {
+extension AttributesBuilder {
+    
+    public func link(_ url: URL) -> Self {
+        self[NSLinkAttributeName] = url
+        return self
+    }
+    
+    public func backgroundColor(_ color: UIColor) -> Self {
+        self[NSBackgroundColorAttributeName] = color
+        return self
+    }
+    
+    public func characterSpacing(_ spacing: Int) -> Self {
+        self[NSKernAttributeName] = spacing
+        return self
+    }
+    
+    public func font(_ font: UIFont) -> Self {
+        self[NSFontAttributeName] = font
+        return self
+    }
+    
+    public func color(_ color: UIColor) -> Self {
+        self[NSForegroundColorAttributeName] = color
+        return self
+    }
+}
+
+extension AttributesBuilder {
+    
+    private var paragraphStyle: NSMutableParagraphStyle {
+        return self[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+    }
+    
+    public func lineSpacing(_ spacing: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.lineSpacing = spacing
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    public func paragraphSpacing(_ spacing: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.paragraphSpacing = spacing
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    public func alignment(_ mode: NSTextAlignment) -> Self {
+        let style = self.paragraphStyle
+        style.alignment = mode
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    public func lineBreakMode(_ mode: NSLineBreakMode) -> Self {
+        let style = self.paragraphStyle
+        style.lineBreakMode = mode
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    public func baseWritingDirection(_ direction: NSWritingDirection) -> Self {
+        let style = self.paragraphStyle
+        style.baseWritingDirection = direction
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+}
+
+extension String: AttributesBuilderNamespaceWrappable {}
+
+extension NSAttributedString: AttributesBuilderNamespaceWrappable {}
+
+extension AttributesBuilderValueWrapper where Value == String {
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
@@ -28,7 +120,7 @@ extension AttributesNamespaceValueWrapper where Value == String {
     }
 }
 
-extension AttributesNamespaceValueWrapper where Value: NSAttributedString {
+extension AttributesBuilderValueWrapper where Value: NSAttributedString {
     
     public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
