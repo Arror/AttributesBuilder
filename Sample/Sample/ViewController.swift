@@ -28,12 +28,12 @@ class ViewController: UIViewController {
         let builder3 = builder
             .copied
             .color(.orange)
-            .font(.systemFont(ofSize: 8.0))
+            .font(.systemFont(ofSize: 10.0))
         
         self.contentLabel.attributedText = "Hallo, 我只是一个Label而已."
             .rs.rendered(by: builder)
             .rs.rendered(by: builder2, range: 0..<6)
-            .rs.rendered(by: builder3, regexPattern: "Label")
+            .rs.rendered(by: builder3, regexPattern: "lAbEl", options: [.caseInsensitive])
     }
 }
 
