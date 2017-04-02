@@ -3,6 +3,7 @@
     pod 'AttributesBuilder'
 
 ## Usage
+![Sample](./Static/sample.png)
 ```swift
 let builder1 = AttributesBuilder()
     .color(.darkGray)
@@ -20,6 +21,8 @@ let content = "CocoaPods is a dependency manager for Swift and Objective-C Cocoa
 
 self.contentLabel.attributedText = content
     .rs.rendered(by: builder1)
+    // Range support.
     .rs.rendered(by: builder2, range: 0..<1)
+    // Regex support.
     .rs.rendered(by: builder3, regexPattern: "Swift and Objective-C")
 ```
