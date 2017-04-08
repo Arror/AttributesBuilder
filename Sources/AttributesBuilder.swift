@@ -29,6 +29,17 @@ extension AttributesBuilder {
     public var copied: AttributesBuilder { return AttributesBuilder(attributes: self.attributes) }
 }
 
+public enum TextEffect {
+    
+    case letterpress
+    
+    var value: String {
+        switch self {
+        case .letterpress: return NSTextEffectLetterpressStyle
+        }
+    }
+}
+
 extension AttributesBuilder {
     
     // NSFontAttributeName
@@ -50,6 +61,10 @@ extension AttributesBuilder {
     }
     
     // NSLigatureAttributeName
+    public func ligature(_ value: Int) -> Self {
+        self[NSLigatureAttributeName] = value
+        return self
+    }
     
     // NSKernAttributeName
     public func characterSpacing(_ spacing: Int) -> Self {
@@ -58,22 +73,58 @@ extension AttributesBuilder {
     }
     
     // NSStrikethroughStyleAttributeName
+    public func strikethroughStyle(_ value: Int) -> Self {
+        self[NSStrikethroughStyleAttributeName] = value
+        return self
+    }
     
     // NSStrikethroughColorAttributeName
+    public func strikethroughColor(_ color: UIColor) -> Self {
+        self[NSStrikethroughColorAttributeName] = color
+        return self
+    }
     
     // NSUnderlineStyleAttributeName
+    public func underlineStyle(_ value: Int) -> Self {
+        self[NSUnderlineStyleAttributeName] = value
+        return self
+    }
     
     // NSUnderlineColorAttributeName
+    public func underlineColor(_ color: UIColor) -> Self {
+        self[NSUnderlineColorAttributeName] = color
+        return self
+    }
     
     // NSStrokeWidthAttributeName
+    public func strokeWidth(_ width: Int) -> Self {
+        self[NSStrokeWidthAttributeName] = width
+        return self
+    }
     
     // NSStrokeColorAttributeName
+    public func strokeColor(_ color: UIColor) -> Self {
+        self[NSStrokeColorAttributeName] = color
+        return self
+    }
     
     // NSShadowAttributeName
+    public func shadow(_ value: NSShadow) -> Self {
+        self[NSShadowAttributeName] = value
+        return self
+    }
     
     // NSTextEffectAttributeName
+    public func textEffect(_ effect: TextEffect) -> Self {
+        self[NSTextEffectAttributeName] = effect.value
+        return self
+    }
     
     // NSAttachmentAttributeName
+    public func attachment(_ value: NSTextAttachment) -> Self {
+        self[NSAttachmentAttributeName] = value
+        return self
+    }
     
     // NSLinkAttributeName
     public func link(_ url: URL) -> Self {
@@ -82,12 +133,28 @@ extension AttributesBuilder {
     }
     
     // NSBaselineOffsetAttributeName
+    public func baselineOffset(_ offset: CGFloat) -> Self {
+        self[NSBaselineOffsetAttributeName] = offset
+        return self
+    }
     
     // NSObliquenessAttributeName
+    public func obliqueness(_ value: CGFloat) -> Self {
+        self[NSObliquenessAttributeName] = value
+        return self
+    }
     
     // NSExpansionAttributeName
+    public func expansion(_ value: CGFloat) -> Self {
+        self[NSExpansionAttributeName] = value
+        return self
+    }
     
     // NSVerticalGlyphFormAttributeName
+    public func verticalGlyphForm(_ value: Int) -> Self {
+        self[NSVerticalGlyphFormAttributeName] = value
+        return self
+    }
 }
 
 extension AttributesBuilder {
