@@ -31,30 +31,63 @@ extension AttributesBuilder {
 
 extension AttributesBuilder {
     
-    public func link(_ url: URL) -> Self {
-        self[NSLinkAttributeName] = url
-        return self
-    }
-    
-    public func backgroundColor(_ color: UIColor) -> Self {
-        self[NSBackgroundColorAttributeName] = color
-        return self
-    }
-    
-    public func characterSpacing(_ spacing: Int) -> Self {
-        self[NSKernAttributeName] = spacing
-        return self
-    }
-    
+    // NSFontAttributeName
     public func font(_ font: UIFont) -> Self {
         self[NSFontAttributeName] = font
         return self
     }
     
+    // NSForegroundColorAttributeName
     public func color(_ color: UIColor) -> Self {
         self[NSForegroundColorAttributeName] = color
         return self
     }
+    
+    // NSBackgroundColorAttributeName
+    public func backgroundColor(_ color: UIColor) -> Self {
+        self[NSBackgroundColorAttributeName] = color
+        return self
+    }
+    
+    // NSLigatureAttributeName
+    
+    // NSKernAttributeName
+    public func characterSpacing(_ spacing: Int) -> Self {
+        self[NSKernAttributeName] = spacing
+        return self
+    }
+    
+    // NSStrikethroughStyleAttributeName
+    
+    // NSStrikethroughColorAttributeName
+    
+    // NSUnderlineStyleAttributeName
+    
+    // NSUnderlineColorAttributeName
+    
+    // NSStrokeWidthAttributeName
+    
+    // NSStrokeColorAttributeName
+    
+    // NSShadowAttributeName
+    
+    // NSTextEffectAttributeName
+    
+    // NSAttachmentAttributeName
+    
+    // NSLinkAttributeName
+    public func link(_ url: URL) -> Self {
+        self[NSLinkAttributeName] = url
+        return self
+    }
+    
+    // NSBaselineOffsetAttributeName
+    
+    // NSObliquenessAttributeName
+    
+    // NSExpansionAttributeName
+    
+    // NSVerticalGlyphFormAttributeName
 }
 
 extension AttributesBuilder {
@@ -63,20 +96,7 @@ extension AttributesBuilder {
         return self[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
     }
     
-    public func lineSpacing(_ spacing: CGFloat) -> Self {
-        let style = self.paragraphStyle
-        style.lineSpacing = spacing
-        self[NSParagraphStyleAttributeName] = style
-        return self
-    }
-    
-    public func paragraphSpacing(_ spacing: CGFloat) -> Self {
-        let style = self.paragraphStyle
-        style.paragraphSpacing = spacing
-        self[NSParagraphStyleAttributeName] = style
-        return self
-    }
-    
+    // NSParagraphStyleAttributeName - alignment
     public func alignment(_ mode: NSTextAlignment) -> Self {
         let style = self.paragraphStyle
         style.alignment = mode
@@ -84,6 +104,13 @@ extension AttributesBuilder {
         return self
     }
     
+    // NSParagraphStyleAttributeName - firstLineHeadIndent
+    
+    // NSParagraphStyleAttributeName - headIndent
+    
+    // NSParagraphStyleAttributeName - tailIndent
+    
+    // NSParagraphStyleAttributeName - lineBreakMode
     public func lineBreakMode(_ mode: NSLineBreakMode) -> Self {
         let style = self.paragraphStyle
         style.lineBreakMode = mode
@@ -91,12 +118,35 @@ extension AttributesBuilder {
         return self
     }
     
+    // NSParagraphStyleAttributeName - maximumLineHeight
+    
+    // NSParagraphStyleAttributeName - lineSpacing
+    public func lineSpacing(_ spacing: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.lineSpacing = spacing
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    // NSParagraphStyleAttributeName - paragraphSpacing
+    public func paragraphSpacing(_ spacing: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.paragraphSpacing = spacing
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
+    // NSParagraphStyleAttributeName - paragraphSpacingBefore
+    
+    // NSParagraphStyleAttributeName - baseWritingDirection
     public func baseWritingDirection(_ direction: NSWritingDirection) -> Self {
         let style = self.paragraphStyle
         style.baseWritingDirection = direction
         self[NSParagraphStyleAttributeName] = style
         return self
     }
+    
+    // NSParagraphStyleAttributeName - lineHeightMultiple
 }
 
 extension String: AttributesBuilderNamespaceWrappable {}
