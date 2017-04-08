@@ -26,7 +26,16 @@ extension AttributesBuilder {
 
 extension AttributesBuilder {
     
-    public var copied: AttributesBuilder { return AttributesBuilder(attributes: self.attributes) }
+    public var copied: AttributesBuilder {
+        
+        var dict = self.attributes
+        
+        if let style = self.attributes[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle {
+            dict[NSParagraphStyleAttributeName] = style.mutableCopy()
+        }
+        
+        return AttributesBuilder(attributes: dict)
+    }
 }
 
 public enum LigatureStyle: Int {
@@ -170,7 +179,7 @@ extension AttributesBuilder {
 
 extension AttributesBuilder {
     
-    private var paragraphStyle: NSMutableParagraphStyle {
+    var paragraphStyle: NSMutableParagraphStyle {
         return self[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
     }
     
