@@ -29,13 +29,24 @@ extension AttributesBuilder {
     public var copied: AttributesBuilder { return AttributesBuilder(attributes: self.attributes) }
 }
 
-public enum TextEffect {
+public enum LigatureStyle: Int {
+    case none       = 0
+    case `default`  = 1
+}
+
+public enum VerticalGlyphFormStyle: Int {
+    case horizontal = 0
+    case vertical   = 1
+}
+
+public enum TextEffect: String {
     
     case letterpress
     
-    var value: String {
+    public var rawValue: String {
         switch self {
-        case .letterpress: return NSTextEffectLetterpressStyle
+        case .letterpress:
+            return NSTextEffectLetterpressStyle
         }
     }
 }
@@ -61,20 +72,20 @@ extension AttributesBuilder {
     }
     
     // NSLigatureAttributeName
-    public func ligature(_ value: Int) -> Self {
-        self[NSLigatureAttributeName] = value
+    public func ligature(_ style: LigatureStyle) -> Self {
+        self[NSLigatureAttributeName] = style.rawValue
         return self
     }
     
     // NSKernAttributeName
-    public func characterSpacing(_ spacing: Int) -> Self {
+    public func characterSpacing(_ spacing: CGFloat) -> Self {
         self[NSKernAttributeName] = spacing
         return self
     }
     
     // NSStrikethroughStyleAttributeName
-    public func strikethroughStyle(_ value: Int) -> Self {
-        self[NSStrikethroughStyleAttributeName] = value
+    public func strikethroughStyle(_ style: NSUnderlineStyle) -> Self {
+        self[NSStrikethroughStyleAttributeName] = style.rawValue
         return self
     }
     
@@ -85,8 +96,8 @@ extension AttributesBuilder {
     }
     
     // NSUnderlineStyleAttributeName
-    public func underlineStyle(_ value: Int) -> Self {
-        self[NSUnderlineStyleAttributeName] = value
+    public func underlineStyle(_ style: NSUnderlineStyle) -> Self {
+        self[NSUnderlineStyleAttributeName] = style.rawValue
         return self
     }
     
@@ -97,7 +108,7 @@ extension AttributesBuilder {
     }
     
     // NSStrokeWidthAttributeName
-    public func strokeWidth(_ width: Int) -> Self {
+    public func strokeWidth(_ width: CGFloat) -> Self {
         self[NSStrokeWidthAttributeName] = width
         return self
     }
@@ -116,7 +127,7 @@ extension AttributesBuilder {
     
     // NSTextEffectAttributeName
     public func textEffect(_ effect: TextEffect) -> Self {
-        self[NSTextEffectAttributeName] = effect.value
+        self[NSTextEffectAttributeName] = effect.rawValue
         return self
     }
     
@@ -151,8 +162,8 @@ extension AttributesBuilder {
     }
     
     // NSVerticalGlyphFormAttributeName
-    public func verticalGlyphForm(_ value: Int) -> Self {
-        self[NSVerticalGlyphFormAttributeName] = value
+    public func verticalGlyphForm(_ style: VerticalGlyphFormStyle) -> Self {
+        self[NSVerticalGlyphFormAttributeName] = style.rawValue
         return self
     }
 }
