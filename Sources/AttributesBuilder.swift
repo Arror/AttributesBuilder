@@ -105,10 +105,28 @@ extension AttributesBuilder {
     }
     
     // NSParagraphStyleAttributeName - firstLineHeadIndent
+    public func firstLineHeadIndent(_ indent: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.firstLineHeadIndent = indent
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
     
     // NSParagraphStyleAttributeName - headIndent
+    public func headIndent(_ indent: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.headIndent = indent
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
     
     // NSParagraphStyleAttributeName - tailIndent
+    public func tailIndent(_ indent: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.tailIndent = indent
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
     
     // NSParagraphStyleAttributeName - lineBreakMode
     public func lineBreakMode(_ mode: NSLineBreakMode) -> Self {
@@ -118,7 +136,21 @@ extension AttributesBuilder {
         return self
     }
     
+    // NSParagraphStyleAttributeName - minimumLineHeight
+    public func minimumLineHeight(_ height: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.minimumLineHeight = height
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
+    
     // NSParagraphStyleAttributeName - maximumLineHeight
+    public func maximumLineHeight(_ height: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.maximumLineHeight = height
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
     
     // NSParagraphStyleAttributeName - lineSpacing
     public func lineSpacing(_ spacing: CGFloat) -> Self {
@@ -137,6 +169,12 @@ extension AttributesBuilder {
     }
     
     // NSParagraphStyleAttributeName - paragraphSpacingBefore
+    public func paragraphSpacingBefore(_ spacingBefore: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.paragraphSpacingBefore = spacingBefore
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
     
     // NSParagraphStyleAttributeName - baseWritingDirection
     public func baseWritingDirection(_ direction: NSWritingDirection) -> Self {
@@ -147,6 +185,12 @@ extension AttributesBuilder {
     }
     
     // NSParagraphStyleAttributeName - lineHeightMultiple
+    public func lineHeightMultiple(_ height: CGFloat) -> Self {
+        let style = self.paragraphStyle
+        style.lineHeightMultiple = height
+        self[NSParagraphStyleAttributeName] = style
+        return self
+    }
 }
 
 extension String: AttributesBuilderNamespaceWrappable {}
