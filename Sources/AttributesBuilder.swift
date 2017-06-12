@@ -30,8 +30,8 @@ extension AttributesBuilder {
         
         var dict = self.attributes
         
-        if let style = self.attributes[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle {
-            dict[NSParagraphStyleAttributeName] = style.mutableCopy()
+        if let style = self.attributes[NSAttributedStringKey.paragraphStyle.rawValue] as? NSMutableParagraphStyle {
+            dict[NSAttributedStringKey.paragraphStyle.rawValue] = style.mutableCopy()
         }
         
         return AttributesBuilder(attributes: dict)
@@ -55,7 +55,7 @@ public enum TextEffect: String {
     public var rawValue: String {
         switch self {
         case .letterpress:
-            return NSTextEffectLetterpressStyle
+            return NSAttributedString.TextEffectStyle.letterpressStyle.rawValue
         }
     }
 }
@@ -64,115 +64,115 @@ extension AttributesBuilder {
     
     // NSFontAttributeName
     public func font(_ font: UIFont) -> Self {
-        self[NSFontAttributeName] = font
+        self[NSAttributedStringKey.font.rawValue] = font
         return self
     }
     
     // NSForegroundColorAttributeName
     public func color(_ color: UIColor) -> Self {
-        self[NSForegroundColorAttributeName] = color
+        self[NSAttributedStringKey.foregroundColor.rawValue] = color
         return self
     }
     
     // NSBackgroundColorAttributeName
     public func backgroundColor(_ color: UIColor) -> Self {
-        self[NSBackgroundColorAttributeName] = color
+        self[NSAttributedStringKey.backgroundColor.rawValue] = color
         return self
     }
     
     // NSLigatureAttributeName
     public func ligature(_ style: LigatureStyle) -> Self {
-        self[NSLigatureAttributeName] = style.rawValue
+        self[NSAttributedStringKey.ligature.rawValue] = style.rawValue
         return self
     }
     
     // NSKernAttributeName
     public func characterSpacing(_ spacing: CGFloat) -> Self {
-        self[NSKernAttributeName] = spacing
+        self[NSAttributedStringKey.kern.rawValue] = spacing
         return self
     }
     
     // NSStrikethroughStyleAttributeName
     public func strikethroughStyle(_ style: NSUnderlineStyle) -> Self {
-        self[NSStrikethroughStyleAttributeName] = style.rawValue
+        self[NSAttributedStringKey.strikethroughStyle.rawValue] = style.rawValue
         return self
     }
     
     // NSStrikethroughColorAttributeName
     public func strikethroughColor(_ color: UIColor) -> Self {
-        self[NSStrikethroughColorAttributeName] = color
+        self[NSAttributedStringKey.strikethroughColor.rawValue] = color
         return self
     }
     
     // NSUnderlineStyleAttributeName
     public func underlineStyle(_ style: NSUnderlineStyle) -> Self {
-        self[NSUnderlineStyleAttributeName] = style.rawValue
+        self[NSAttributedStringKey.underlineStyle.rawValue] = style.rawValue
         return self
     }
     
     // NSUnderlineColorAttributeName
     public func underlineColor(_ color: UIColor) -> Self {
-        self[NSUnderlineColorAttributeName] = color
+        self[NSAttributedStringKey.underlineColor.rawValue] = color
         return self
     }
     
     // NSStrokeWidthAttributeName
     public func strokeWidth(_ width: CGFloat) -> Self {
-        self[NSStrokeWidthAttributeName] = width
+        self[NSAttributedStringKey.strokeWidth.rawValue] = width
         return self
     }
     
     // NSStrokeColorAttributeName
     public func strokeColor(_ color: UIColor) -> Self {
-        self[NSStrokeColorAttributeName] = color
+        self[NSAttributedStringKey.strokeColor.rawValue] = color
         return self
     }
     
     // NSShadowAttributeName
     public func shadow(_ value: NSShadow) -> Self {
-        self[NSShadowAttributeName] = value
+        self[NSAttributedStringKey.shadow.rawValue] = value
         return self
     }
     
     // NSTextEffectAttributeName
     public func textEffect(_ effect: TextEffect) -> Self {
-        self[NSTextEffectAttributeName] = effect.rawValue
+        self[NSAttributedStringKey.textEffect.rawValue] = effect.rawValue
         return self
     }
     
     // NSAttachmentAttributeName
     public func attachment(_ value: NSTextAttachment) -> Self {
-        self[NSAttachmentAttributeName] = value
+        self[NSAttributedStringKey.attachment.rawValue] = value
         return self
     }
     
     // NSLinkAttributeName
     public func link(_ url: URL) -> Self {
-        self[NSLinkAttributeName] = url
+        self[NSAttributedStringKey.link.rawValue] = url
         return self
     }
     
     // NSBaselineOffsetAttributeName
     public func baselineOffset(_ offset: CGFloat) -> Self {
-        self[NSBaselineOffsetAttributeName] = offset
+        self[NSAttributedStringKey.baselineOffset.rawValue] = offset
         return self
     }
     
     // NSObliquenessAttributeName
     public func obliqueness(_ value: CGFloat) -> Self {
-        self[NSObliquenessAttributeName] = value
+        self[NSAttributedStringKey.obliqueness.rawValue] = value
         return self
     }
     
     // NSExpansionAttributeName
     public func expansion(_ value: CGFloat) -> Self {
-        self[NSExpansionAttributeName] = value
+        self[NSAttributedStringKey.expansion.rawValue] = value
         return self
     }
     
     // NSVerticalGlyphFormAttributeName
     public func verticalGlyphForm(_ style: VerticalGlyphFormStyle) -> Self {
-        self[NSVerticalGlyphFormAttributeName] = style.rawValue
+        self[NSAttributedStringKey.verticalGlyphForm.rawValue] = style.rawValue
         return self
     }
 }
@@ -180,14 +180,14 @@ extension AttributesBuilder {
 extension AttributesBuilder {
     
     var paragraphStyle: NSMutableParagraphStyle {
-        return self[NSParagraphStyleAttributeName] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
+        return self[NSAttributedStringKey.paragraphStyle.rawValue] as? NSMutableParagraphStyle ?? NSMutableParagraphStyle()
     }
     
     // NSParagraphStyleAttributeName - alignment
     public func alignment(_ mode: NSTextAlignment) -> Self {
         let style = self.paragraphStyle
         style.alignment = mode
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -195,7 +195,7 @@ extension AttributesBuilder {
     public func firstLineHeadIndent(_ indent: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.firstLineHeadIndent = indent
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -203,7 +203,7 @@ extension AttributesBuilder {
     public func headIndent(_ indent: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.headIndent = indent
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -211,7 +211,7 @@ extension AttributesBuilder {
     public func tailIndent(_ indent: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.tailIndent = indent
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -219,7 +219,7 @@ extension AttributesBuilder {
     public func lineBreakMode(_ mode: NSLineBreakMode) -> Self {
         let style = self.paragraphStyle
         style.lineBreakMode = mode
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -227,7 +227,7 @@ extension AttributesBuilder {
     public func minimumLineHeight(_ height: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.minimumLineHeight = height
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -235,7 +235,7 @@ extension AttributesBuilder {
     public func maximumLineHeight(_ height: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.maximumLineHeight = height
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -243,7 +243,7 @@ extension AttributesBuilder {
     public func lineSpacing(_ spacing: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.lineSpacing = spacing
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -251,7 +251,7 @@ extension AttributesBuilder {
     public func paragraphSpacing(_ spacing: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.paragraphSpacing = spacing
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -259,7 +259,7 @@ extension AttributesBuilder {
     public func paragraphSpacingBefore(_ spacingBefore: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.paragraphSpacingBefore = spacingBefore
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -267,7 +267,7 @@ extension AttributesBuilder {
     public func baseWritingDirection(_ direction: NSWritingDirection) -> Self {
         let style = self.paragraphStyle
         style.baseWritingDirection = direction
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
     
@@ -275,7 +275,7 @@ extension AttributesBuilder {
     public func lineHeightMultiple(_ height: CGFloat) -> Self {
         let style = self.paragraphStyle
         style.lineHeightMultiple = height
-        self[NSParagraphStyleAttributeName] = style
+        self[NSAttributedStringKey.paragraphStyle.rawValue] = style
         return self
     }
 }

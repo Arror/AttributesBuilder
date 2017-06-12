@@ -72,11 +72,11 @@ extension AttributesBuilderValueWrapper where Value: NSAttributedString {
         
         let s = NSMutableAttributedString(attributedString: self.value)
         
-        let fullRange = self.value.string.fullRange
-        
-        ranges.forEach { range in
-            s.addAttributes(builder.attributes, range: NSRange.from(countableRange: fullRange.clamped(to: range)))
-        }
+//        let fullRange = self.value.string.fullRange
+//        
+//        ranges.forEach { range in
+//            s.addAttributes(builder.attributes, range: NSRange.from(countableRange: fullRange.clamped(to: range)))
+//        }
         
         return s
     }
