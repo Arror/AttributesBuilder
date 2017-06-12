@@ -2,23 +2,26 @@ import Foundation
 
 extension NSRange {
     
-    func toCountableRange() -> CountableRange<Int> {
+    var countableRange: CountableRange<Int> {
         return self.location..<(self.location + self.length)
     }
+}
+
+extension CountableRange where Bound == Int {
     
-    static func from(countableRange range: CountableRange<Int>) -> NSRange {
-        return NSMakeRange(range.lowerBound, range.upperBound - range.lowerBound)
+    var nsRange: NSRange {
+        return NSMakeRange(self.lowerBound, self.upperBound - self.lowerBound)
     }
 }
 
 extension String {
     
-    var fullRange: CountableRange<Int> {
-        return 0..<self.characters.count
+    var fullCountableRange: CountableRange<Int> {
+        return 0..<self.count
     }
     
     var fullNSRange: NSRange {
-        return NSMakeRange(0, self.characters.count)
+        return NSMakeRange(0, self.count)
     }
 }
 

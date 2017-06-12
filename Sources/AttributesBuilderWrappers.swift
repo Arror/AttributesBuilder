@@ -54,14 +54,14 @@ extension AttributesBuilderValueWrapper where Value: NSAttributedString {
         
         guard !results.isEmpty else { return self.value }
         
-        let ranges = results.map { $0.range.toCountableRange() }
+        let ranges = results.map { $0.range.countableRange }
         
         return self.rendered(by: builder, ranges: ranges)
     }
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
-        let ranges: [CountableRange<Int>] = [range ?? self.value.string.fullRange]
+        let ranges: [CountableRange<Int>] = [range ?? self.value.string.fullCountableRange]
         
         return self.rendered(by: builder, ranges: ranges)
     }
@@ -72,11 +72,11 @@ extension AttributesBuilderValueWrapper where Value: NSAttributedString {
         
         let s = NSMutableAttributedString(attributedString: self.value)
         
-//        let fullRange = self.value.string.fullRange
-//        
-//        ranges.forEach { range in
-//            s.addAttributes(builder.attributes, range: NSRange.from(countableRange: fullRange.clamped(to: range)))
-//        }
+        let fullRange = self.value.string.fullCountableRange
+        
+        ranges.forEach { range in
+            s.addAttributes(builder.attributes, range: fullRange.clamped(to: range).nsRange)
+        }
         
         return s
     }
