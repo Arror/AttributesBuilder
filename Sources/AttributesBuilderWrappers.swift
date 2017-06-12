@@ -1,6 +1,6 @@
 import Foundation
 
-public final class AttributesBuilderValueWrapper<Value> {
+public final class AttributesBuilderWrapper<Value> {
     
     public let value: Value
     
@@ -9,25 +9,25 @@ public final class AttributesBuilderValueWrapper<Value> {
     }
 }
 
-public protocol AttributesBuilderNamespaceWrappable {
+public protocol AttributesBuilderNamespace {
     
     associatedtype Namespace
     
     var rs: Namespace { get }
 }
 
-extension AttributesBuilderNamespaceWrappable {
+extension AttributesBuilderNamespace {
     
-    public var rs: AttributesBuilderValueWrapper<Self> {
-        return AttributesBuilderValueWrapper<Self>(self)
+    public var rs: AttributesBuilderWrapper<Self> {
+        return AttributesBuilderWrapper<Self>(self)
     }
 }
 
-extension String: AttributesBuilderNamespaceWrappable {}
+extension String: AttributesBuilderNamespace {}
 
-extension NSAttributedString: AttributesBuilderNamespaceWrappable {}
+extension NSAttributedString: AttributesBuilderNamespace {}
 
-extension AttributesBuilderValueWrapper where Value == String {
+extension AttributesBuilderWrapper where Value == String {
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
@@ -44,7 +44,7 @@ extension AttributesBuilderValueWrapper where Value == String {
     }
 }
 
-extension AttributesBuilderValueWrapper where Value: NSAttributedString {
+extension AttributesBuilderWrapper where Value: NSAttributedString {
     
     public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
