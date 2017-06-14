@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Sample
-//
-//  Created by Arror on 2017/3/27.
-//  Copyright © 2017年 Arror. All rights reserved.
-//
-
 import UIKit
 import AttributesBuilder
 
@@ -36,3 +28,4 @@ class ViewController: UIViewController {
             .rs.rendered(by: builder3, regexPattern: "Swift and Objective-C")
     }
 }
+

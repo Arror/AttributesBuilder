@@ -3,7 +3,7 @@
     pod 'AttributesBuilder'
 
 ## Usage
-![Sample](./Static/sample.png)
+![Sample](./example.png)
 ```swift
 let builder1 = AttributesBuilder()
     .color(.darkGray)
