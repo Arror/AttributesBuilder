@@ -16,12 +16,17 @@ extension AttributesContainer {
         initialBlock(&self)
     }
     
-    public func copy(_ modifyBlock: (inout Self) -> Void) -> Self {
+    public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
         var builder = type(of: self).init(self.attributes)
         
-        modifyBlock(&builder)
+        copyBlock(&builder)
         
         return builder
+    }
+    
+    public mutating func modify(_ modifyBlock: (inout Self) -> Void) {
+        
+        modifyBlock(&self)
     }
 }

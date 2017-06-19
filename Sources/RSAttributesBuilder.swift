@@ -27,98 +27,98 @@ extension NSAttributedString {
 extension RSAttributesBuilder {
     
     // NSFontAttributeName
-    public mutating func font(_ font: UIFont) {
-        self.attributes[.font] = font
+    public mutating func font(_ font: @autoclosure () -> UIFont) {
+        self.attributes[.font] = font()
     }
     
     // NSForegroundColorAttributeName
-    public mutating func color(_ color: UIColor) {
-        self.attributes[.foregroundColor] = color
+    public mutating func color(_ color: @autoclosure () -> UIColor) {
+        self.attributes[.foregroundColor] = color()
     }
     
     // NSBackgroundColorAttributeName
-    public mutating func backgroundColor(_ color: UIColor) {
-        self.attributes[.backgroundColor] = color
+    public mutating func backgroundColor(_ color: @autoclosure () -> UIColor) {
+        self.attributes[.backgroundColor] = color()
     }
     
     // NSLigatureAttributeName
-    public mutating func ligature(_ style: NSAttributedString.LigatureStyle) {
-        self.attributes[.ligature] = style.rawValue
+    public mutating func ligature(_ style: @autoclosure () -> NSAttributedString.LigatureStyle) {
+        self.attributes[.ligature] = style().rawValue
     }
     
     // NSKernAttributeName
-    public mutating func characterSpacing(_ spacing: CGFloat) {
-        self.attributes[.kern] = spacing
+    public mutating func characterSpacing(_ spacing: @autoclosure () -> CGFloat) {
+        self.attributes[.kern] = spacing()
     }
     
     // NSStrikethroughStyleAttributeName
-    public mutating func strikethroughStyle(_ style: NSUnderlineStyle) {
-        self.attributes[.strikethroughStyle] = style
+    public mutating func strikethroughStyle(_ style: @autoclosure () -> NSUnderlineStyle) {
+        self.attributes[.strikethroughStyle] = style()
     }
     
     // NSStrikethroughColorAttributeName
-    public mutating func strikethroughColor(_ color: UIColor) {
-        self.attributes[.strikethroughColor] = color
+    public mutating func strikethroughColor(_ color: @autoclosure () -> UIColor) {
+        self.attributes[.strikethroughColor] = color()
     }
     
     // NSUnderlineStyleAttributeName
-    public mutating func underlineStyle(_ style: NSUnderlineStyle) {
-        self.attributes[.underlineStyle] = style
+    public mutating func underlineStyle(_ style: @autoclosure () -> NSUnderlineStyle) {
+        self.attributes[.underlineStyle] = style()
     }
     
     // NSUnderlineColorAttributeName
-    public mutating func underlineColor(_ color: UIColor) {
-        self.attributes[.underlineColor] = color
+    public mutating func underlineColor(_ color: @autoclosure () -> UIColor) {
+        self.attributes[.underlineColor] = color()
     }
     
     // NSStrokeWidthAttributeName
-    public mutating func strokeWidth(_ width: CGFloat) {
-        self.attributes[.strokeWidth] = width
+    public mutating func strokeWidth(_ width: @autoclosure () -> CGFloat) {
+        self.attributes[.strokeWidth] = width()
     }
     
     // NSStrokeColorAttributeName
-    public mutating func strokeColor(_ color: UIColor) {
-        self.attributes[.strokeColor] = color
+    public mutating func strokeColor(_ color: @autoclosure () -> UIColor) {
+        self.attributes[.strokeColor] = color()
     }
     
     // NSShadowAttributeName
-    public mutating func shadow(_ value: NSShadow) {
-        self.attributes[.shadow] = value
+    public mutating func shadow(_ value: @autoclosure () -> NSShadow) {
+        self.attributes[.shadow] = value()
     }
     
     // NSTextEffectAttributeName
-    public mutating func textEffect(_ effect: NSAttributedString.TextEffectStyle) {
-        self.attributes[.textEffect] = effect
+    public mutating func textEffect(_ effect: @autoclosure () -> NSAttributedString.TextEffectStyle) {
+        self.attributes[.textEffect] = effect()
     }
     
     // NSAttachmentAttributeName
-    public mutating func attachment(_ value: NSTextAttachment) {
-        self.attributes[.attachment] = value
+    public mutating func attachment(_ value: @autoclosure () -> NSTextAttachment) {
+        self.attributes[.attachment] = value()
     }
     
     // NSLinkAttributeName
-    public mutating func link(_ url: URL) {
-        self.attributes[.link] = url
+    public mutating func link(_ url: @autoclosure () -> URL) {
+        self.attributes[.link] = url()
     }
     
     // NSBaselineOffsetAttributeName
-    public mutating func baselineOffset(_ offset: CGFloat) {
-        self.attributes[.baselineOffset] = offset
+    public mutating func baselineOffset(_ offset: @autoclosure () -> CGFloat) {
+        self.attributes[.baselineOffset] = offset()
     }
     
     // NSObliquenessAttributeName
-    public mutating func obliqueness(_ value: CGFloat) {
-        self.attributes[.obliqueness] = value
+    public mutating func obliqueness(_ value: @autoclosure () -> CGFloat) {
+        self.attributes[.obliqueness] = value()
     }
     
     // NSExpansionAttributeName
-    public mutating func expansion(_ value: CGFloat) {
-        self.attributes[.expansion] = value
+    public mutating func expansion(_ value: @autoclosure () -> CGFloat) {
+        self.attributes[.expansion] = value()
     }
     
     // NSVerticalGlyphFormAttributeName
-    public mutating func verticalGlyphForm(_ style: NSAttributedString.VerticalGlyphFormStyle) {
-        self.attributes[.verticalGlyphForm] = style.rawValue
+    public mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle) {
+        self.attributes[.verticalGlyphForm] = style().rawValue
     }
 }
 
