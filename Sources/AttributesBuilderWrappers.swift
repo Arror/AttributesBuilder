@@ -25,24 +25,24 @@ extension NSAttributedString: AttributedNamespace {}
 
 extension AttributedValueWrapper where Value == String {
     
-    public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
+    public func rendered(by container: AttributesContainer, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
-        return s.rs.rendered(by: builder, range: range)
+        return s.rs.rendered(by: container, range: range)
     }
     
-    public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered(by container: AttributesContainer, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
-        return s.rs.rendered(by: builder, regexPattern: regexPattern, options: options)
+        return s.rs.rendered(by: container, regexPattern: regexPattern, options: options)
     }
 }
 
 extension AttributedValueWrapper where Value: NSAttributedString {
     
-    public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered(by container: AttributesContainer, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         guard let regex = try? NSRegularExpression(pattern: regexPattern, options: options) else { return self.value }
         
@@ -52,17 +52,17 @@ extension AttributedValueWrapper where Value: NSAttributedString {
         
         let ranges = results.map { $0.range.countableRange }
         
-        return self.rendered(by: builder, ranges: ranges)
+        return self.rendered(by: container, ranges: ranges)
     }
     
-    public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
+    public func rendered(by container: AttributesContainer, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
         let ranges: [CountableRange<Int>] = [range ?? self.value.string.fullCountableRange]
         
-        return self.rendered(by: builder, ranges: ranges)
+        return self.rendered(by: container, ranges: ranges)
     }
     
-    func rendered(by builder: AttributesBuilder, ranges: [CountableRange<Int>] = []) -> NSAttributedString {
+    func rendered(by container: AttributesContainer, ranges: [CountableRange<Int>] = []) -> NSAttributedString {
         
         guard !ranges.isEmpty else { return self.value }
         
@@ -70,7 +70,7 @@ extension AttributedValueWrapper where Value: NSAttributedString {
         
         let fullRange = self.value.string.fullCountableRange
         
-        let attributes = builder.build()
+        let attributes = container.build()
         
         ranges.forEach { s.addAttributes(attributes, range: fullRange.clamped(to: $0).nsRange) }
         
