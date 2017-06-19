@@ -1,33 +1,29 @@
 import Foundation
 
-public final class AttributesBuilderWrapper<Value> {
+public struct AttributedValueWrapper<Value> {
     
     public let value: Value
     
-    public required init(_ value: Value) {
-        self.value = value
-    }
+    public init(_ value: Value) { self.value = value }
 }
 
-public protocol AttributesBuilderNamespace {
+public protocol AttributedNamespace {
     
     associatedtype Namespace
     
     var rs: Namespace { get }
 }
 
-extension AttributesBuilderNamespace {
+extension AttributedNamespace {
     
-    public var rs: AttributesBuilderWrapper<Self> {
-        return AttributesBuilderWrapper<Self>(self)
-    }
+    public var rs: AttributedValueWrapper<Self> { return AttributedValueWrapper<Self>(self) }
 }
 
-extension String: AttributesBuilderNamespace {}
+extension String: AttributedNamespace {}
 
-extension NSAttributedString: AttributesBuilderNamespace {}
+extension NSAttributedString: AttributedNamespace {}
 
-extension AttributesBuilderWrapper where Value == String {
+extension AttributedValueWrapper where Value == String {
     
     public func rendered(by builder: AttributesBuilder, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
@@ -44,7 +40,7 @@ extension AttributesBuilderWrapper where Value == String {
     }
 }
 
-extension AttributesBuilderWrapper where Value: NSAttributedString {
+extension AttributedValueWrapper where Value: NSAttributedString {
     
     public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
@@ -74,9 +70,9 @@ extension AttributesBuilderWrapper where Value: NSAttributedString {
         
         let fullRange = self.value.string.fullCountableRange
         
-        ranges.forEach { range in
-            s.addAttributes(builder.attributes, range: fullRange.clamped(to: range).nsRange)
-        }
+        let attributes = builder.build()
+        
+        ranges.forEach { s.addAttributes(attributes, range: fullRange.clamped(to: $0).nsRange) }
         
         return s
     }
