@@ -7,8 +7,8 @@ public protocol AttributesContainer {
     func build() -> [NSAttributedStringKey: Any]
 }
 
-extension AttributesContainer where Self: AttributesContainer {
-    
+extension AttributesContainer {
+
     public func build() -> [NSAttributedStringKey: Any] {
         
         return self.attributes
