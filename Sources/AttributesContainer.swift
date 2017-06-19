@@ -8,10 +8,24 @@ public protocol AttributesContainer {
 }
 
 extension AttributesContainer {
+    
+    var attributesCopy: [NSAttributedStringKey : Any] {
+        
+        var copy = self.attributes
+        
+        if let paragraphStyle = self.attributes[.paragraphStyle] as? NSParagraphStyle {
+            
+            paragraphStyle.mutableCopy()
+            
+            copy[.paragraphStyle] = paragraphStyle
+        }
+        
+        return copy
+    }
 
     public func build() -> [NSAttributedStringKey: Any] {
         
-        return self.attributes
+        return self.attributesCopy
     }
 }
 
@@ -26,7 +40,7 @@ extension AttributesContainer where Self == AttributesBuilder {
     
     public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
-        var builder = type(of: self).init(self.attributes)
+        var builder = type(of: self).init(self.attributesCopy)
         
         copyBlock(&builder)
         
@@ -147,5 +161,10 @@ extension AttributesContainer where Self == AttributesBuilder {
     // NSVerticalGlyphFormAttributeName
     public mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle) {
         self.attributes[.verticalGlyphForm] = style().rawValue
+    }
+    
+    // NSParagraphStyleAttributeName
+    public mutating func paragraphStyle(_ style: @autoclosure () -> NSParagraphStyle) {
+        self.attributes[.paragraphStyle] = style()
     }
 }
