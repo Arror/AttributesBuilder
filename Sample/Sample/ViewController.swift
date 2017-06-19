@@ -10,7 +10,7 @@ class ViewController: UIViewController {
         
         let content = "CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. It has over 30 thousand libraries and is used in over 1.9 million apps. CocoaPods can help you scale your projects elegantly."
         
-        let builder1 = RSAttributesBuilder {
+        let builder1 = AttributesBuilder {
             $0.color(content.contains("CocoaPods") ? .blue : .yellow)
             $0.font(.systemFont(ofSize: 14.0))
         }
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
             $0.font(.systemFont(ofSize: 24.0))
         }
         
-        let builder3 = RSAttributesBuilder {
+        let builder3 = AttributesBuilder {
             $0.color(.red)
             $0.font(.boldSystemFont(ofSize: 18.0))
         }
