@@ -5,15 +5,6 @@ public protocol AttributesContainer {
     var attributes: [NSAttributedStringKey : Any] { get }
 }
 
-internal protocol _AttributesContainer: AttributesContainer {
-    
-    var attributes: [NSAttributedStringKey : Any] { get set }
-    
-    init()
-    
-    init(_ attributes: [NSAttributedStringKey: Any])
-}
-
 extension AttributesContainer {
     
     internal func build() -> [NSAttributedStringKey: Any] {
@@ -31,6 +22,21 @@ extension AttributesContainer {
     }
 }
 
+internal protocol _AttributesContainer: AttributesContainer {
+    
+    var attributes: [NSAttributedStringKey : Any] { get set }
+    
+    init(attributes: [NSAttributedStringKey: Any])
+}
+
+extension _AttributesContainer {
+    
+    private init() {
+        
+        self.init(attributes: [:])
+    }
+}
+
 extension _AttributesContainer {
     
     public init(_ initialBlock: (inout Self) -> Void) {
@@ -42,7 +48,7 @@ extension _AttributesContainer {
     
     public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
-        var builder = type(of: self).init(self.build())
+        var builder = type(of: self).init(attributes: self.build())
         
         copyBlock(&builder)
         
