@@ -3,9 +3,17 @@ import UIKit
 public struct AttributesBuilder: AttributesContainer {
     
     public internal(set) var attributes: [NSAttributedStringKey : Any]
+}
+
+extension AttributesBuilder: _AttributesContainer {
     
-    init(_ attributes: [NSAttributedStringKey : Any] = [:]) {
+    internal init() {
         
-        self.attributes = [:]
+        self.init([:])
+    }
+    
+    internal init(_ attributes: [NSAttributedStringKey : Any]) {
+        
+        self.attributes = attributes
     }
 }

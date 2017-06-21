@@ -5,25 +5,33 @@ public protocol AttributesContainer {
     var attributes: [NSAttributedStringKey : Any] { get }
 }
 
-extension AttributesContainer {
+internal protocol _AttributesContainer: AttributesContainer {
+    
+    var attributes: [NSAttributedStringKey : Any] { get set }
+    
+    init()
+    
+    init(_ attributes: [NSAttributedStringKey: Any])
+}
 
-    func build() -> [NSAttributedStringKey: Any] {
+extension AttributesContainer {
+    
+    internal func build() -> [NSAttributedStringKey: Any] {
         
-        var copy = self.attributes
+        var copied = self.attributes
         
-        if let paragraphStyle = self.attributes[.paragraphStyle] as? NSParagraphStyle {
+        if let style = self.attributes[.paragraphStyle] as? NSParagraphStyle {
             
-            paragraphStyle.mutableCopy()
+            style.mutableCopy()
             
-            copy[.paragraphStyle] = paragraphStyle
+            copied[.paragraphStyle] = style
         }
         
-        return copy
-        
+        return copied
     }
 }
 
-extension AttributesContainer where Self == AttributesBuilder {
+extension _AttributesContainer {
     
     public init(_ initialBlock: (inout Self) -> Void) {
         
@@ -40,11 +48,6 @@ extension AttributesContainer where Self == AttributesBuilder {
         
         return builder
     }
-    
-    public mutating func modify(_ modifyBlock: (inout Self) -> Void) {
-        
-        modifyBlock(&self)
-    }
 }
 
 extension NSAttributedString {
@@ -60,7 +63,7 @@ extension NSAttributedString {
     }
 }
 
-extension AttributesContainer where Self == AttributesBuilder {
+extension _AttributesContainer {
     
     // NSFontAttributeName
     public mutating func font(_ font: @autoclosure () -> UIFont) {
