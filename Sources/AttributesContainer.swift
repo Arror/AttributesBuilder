@@ -3,13 +3,11 @@ import Foundation
 public protocol AttributesContainer {
     
     var attributes: [NSAttributedStringKey : Any] { get }
-    
-    func build() -> [NSAttributedStringKey: Any]
 }
 
 extension AttributesContainer {
-    
-    var attributesCopy: [NSAttributedStringKey : Any] {
+
+    func build() -> [NSAttributedStringKey: Any] {
         
         var copy = self.attributes
         
@@ -21,11 +19,7 @@ extension AttributesContainer {
         }
         
         return copy
-    }
-
-    public func build() -> [NSAttributedStringKey: Any] {
         
-        return self.attributesCopy
     }
 }
 
@@ -40,7 +34,7 @@ extension AttributesContainer where Self == AttributesBuilder {
     
     public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
-        var builder = type(of: self).init(self.attributesCopy)
+        var builder = type(of: self).init(self.build())
         
         copyBlock(&builder)
         
