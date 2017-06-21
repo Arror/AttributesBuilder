@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		70054AE31EF16F150009B774 /* AttributesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70054ADB1EF16E550009B774 /* AttributesBuilder.swift */; };
-		70054AE41EF16F180009B774 /* AttributesBuilderUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70054ADA1EF16E550009B774 /* AttributesBuilderUtils.swift */; };
-		70054AE51EF16F1C0009B774 /* AttributesBuilderWrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70054ADC1EF16E550009B774 /* AttributesBuilderWrappers.swift */; };
+		70054AE41EF16F180009B774 /* AttributesBuilder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70054ADA1EF16E550009B774 /* AttributesBuilder+Utils.swift */; };
+		70054AE51EF16F1C0009B774 /* AttributesBuilder+Wrappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70054ADC1EF16E550009B774 /* AttributesBuilder+Wrappers.swift */; };
 		70054AE71EF16F260009B774 /* AttributesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7D0B01EF16CD4000B4750 /* AttributesBuilderTests.swift */; };
 		702E9CE01EF168E200BB1DA7 /* AttributesBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */; };
 		702E9CE71EF168E200BB1DA7 /* AttributesBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,9 +27,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		70054ADA1EF16E550009B774 /* AttributesBuilderUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesBuilderUtils.swift; sourceTree = "<group>"; };
+		70054ADA1EF16E550009B774 /* AttributesBuilder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributesBuilder+Utils.swift"; sourceTree = "<group>"; };
 		70054ADB1EF16E550009B774 /* AttributesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesBuilder.swift; sourceTree = "<group>"; };
-		70054ADC1EF16E550009B774 /* AttributesBuilderWrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesBuilderWrappers.swift; sourceTree = "<group>"; };
+		70054ADC1EF16E550009B774 /* AttributesBuilder+Wrappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AttributesBuilder+Wrappers.swift"; sourceTree = "<group>"; };
 		702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttributesBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributesBuilder.h; sourceTree = "<group>"; };
 		702E9CDA1EF168E200BB1DA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,8 +82,8 @@
 				702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */,
 				70054ADB1EF16E550009B774 /* AttributesBuilder.swift */,
 				704A9CB51EF799DC003EEC7F /* AttributesContainer.swift */,
-				70054ADA1EF16E550009B774 /* AttributesBuilderUtils.swift */,
-				70054ADC1EF16E550009B774 /* AttributesBuilderWrappers.swift */,
+				70054ADA1EF16E550009B774 /* AttributesBuilder+Utils.swift */,
+				70054ADC1EF16E550009B774 /* AttributesBuilder+Wrappers.swift */,
 				702E9CDA1EF168E200BB1DA7 /* Info.plist */,
 			);
 			path = Sources;
@@ -207,10 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70054AE41EF16F180009B774 /* AttributesBuilderUtils.swift in Sources */,
+				70054AE41EF16F180009B774 /* AttributesBuilder+Utils.swift in Sources */,
 				70054AE31EF16F150009B774 /* AttributesBuilder.swift in Sources */,
 				704A9CB61EF799DC003EEC7F /* AttributesContainer.swift in Sources */,
-				70054AE51EF16F1C0009B774 /* AttributesBuilderWrappers.swift in Sources */,
+				70054AE51EF16F1C0009B774 /* AttributesBuilder+Wrappers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
