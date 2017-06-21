@@ -25,14 +25,14 @@ extension NSAttributedString: AttributedNamespace {}
 
 extension AttributedValueWrapper where Value == String {
     
-    public func rendered(by container: AttributesContainer, range: CountableRange<Int>? = nil) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
         return s.rs.rendered(by: container, range: range)
     }
     
-    public func rendered(by container: AttributesContainer, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
@@ -42,7 +42,7 @@ extension AttributedValueWrapper where Value == String {
 
 extension AttributedValueWrapper where Value: NSAttributedString {
     
-    public func rendered(by container: AttributesContainer, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         guard let regex = try? NSRegularExpression(pattern: regexPattern, options: options) else { return self.value }
         
@@ -55,14 +55,14 @@ extension AttributedValueWrapper where Value: NSAttributedString {
         return self.rendered(by: container, ranges: ranges)
     }
     
-    public func rendered(by container: AttributesContainer, range: CountableRange<Int>? = nil) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, range: CountableRange<Int>? = nil) -> NSAttributedString {
         
         let ranges: [CountableRange<Int>] = [range ?? self.value.string.fullCountableRange]
         
         return self.rendered(by: container, ranges: ranges)
     }
     
-    func rendered(by container: AttributesContainer, ranges: [CountableRange<Int>] = []) -> NSAttributedString {
+    func rendered<Container: AttributesContainer>(by container: Container, ranges: [CountableRange<Int>] = []) -> NSAttributedString {
         
         guard !ranges.isEmpty else { return self.value }
         
