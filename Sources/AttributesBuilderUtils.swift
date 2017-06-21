@@ -17,11 +17,11 @@ extension CountableRange where Bound == Int {
 extension String {
     
     var fullCountableRange: CountableRange<Int> {
-        return 0..<self.count
+        return 0..<self.utf16.count
     }
     
     var fullNSRange: NSRange {
-        return NSMakeRange(0, self.count)
+        return NSMakeRange(0, self.utf16.count)
     }
 }
 
