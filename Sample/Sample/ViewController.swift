@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let content = """
         CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
         
-        Github: \(linkStr)
+        ✨ ✨ ✨ Github: \(linkStr)
         """
         
         let whole = AttributesBuilder {
@@ -36,15 +36,16 @@ class ViewController: UIViewController {
         }
         
         let mark = AttributesBuilder {
-            $0.color(.red)
-            $0.font(.boldSystemFont(ofSize: 18.0))
+            $0.font(.boldSystemFont(ofSize: 30.0))
         }
+        
+        let r = content.startIndex..<(content.index(after: content.startIndex))
         
         self.contentLabel.attributedText = content
             .rs.rendered(by: whole)
-            .rs.rendered(by: first, range: 0..<1)
+            .rs.rendered(by: first, range: r)
             .rs.rendered(by: link, regexPattern: linkStr)
-            .rs.rendered(by: mark, regexPattern: "Swift and Objective-C Cocoa", options: [.caseInsensitive])
+            .rs.rendered(by: mark, regexPattern: "✨")
     }
 }
 
