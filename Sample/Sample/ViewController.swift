@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         
         self.contentLabel.attributedText = content
             .rs.rendered(by: whole)
-            .rs.rendered(by: first, range: r)
+            .rs.rendered(by: first, ranges: r)
             .rs.rendered(by: link, regexPattern: linkStr)
             .rs.rendered(by: mark, regexPattern: "✨")
     }

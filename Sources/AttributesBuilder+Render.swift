@@ -27,16 +27,16 @@ extension AttributedValueWrapper where Value == String {
     
     public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
         
-        let s = NSAttributedString(string: self.value)
-        
-        return s.rs.rendered(by: container, range: self.value.range)
+        return self.value.rs.rendered(by: container, ranges: self.value.range)
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, range: Range<String.Index>? = nil) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, ranges: Range<String.Index>...) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
-        return s.rs.rendered(by: container, range: range)
+        let rs = ranges
+        
+        return s.rs.rendered(by: container, ranges: rs)
     }
     
     public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
@@ -51,14 +51,12 @@ extension AttributedValueWrapper where Value: NSAttributedString {
     
     public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
         
-        return self._rendered(by: container, ranges: [self.value.range])
+        return self.rendered(by: container, ranges: [self.value.range])
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, range: Range<String.Index>? = nil) -> NSAttributedString {
+    public func rendered<Container: AttributesContainer>(by container: Container, ranges: Range<String.Index>...) -> NSAttributedString {
         
-        let ranges: [Range<String.Index>] = [range ?? self.value.range]
-        
-        return self._rendered(by: container, ranges: ranges)
+        return self.rendered(by: container, ranges: ranges)
     }
     
     public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
@@ -71,10 +69,10 @@ extension AttributedValueWrapper where Value: NSAttributedString {
         
         let ranges = results.flatMap { $0.range.toRange(in: self.value.string) }
         
-        return self._rendered(by: container, ranges: ranges)
+        return self.rendered(by: container, ranges: ranges)
     }
     
-    private func _rendered<Container: AttributesContainer>(by container: Container, ranges: [Range<String.Index>] = []) -> NSAttributedString {
+    private func rendered<Container: AttributesContainer>(by container: Container, ranges: [Range<String.Index>] = []) -> NSAttributedString {
         
         guard !ranges.isEmpty else { return self.value }
         
