@@ -25,16 +25,6 @@ extension NSRange {
 
 extension String {
     
-    var range: Range<String.Index> {
-        
-        return self.startIndex..<self.endIndex
-    }
-    
-    var nsRange: NSRange {
-        
-        return (self.startIndex..<self.endIndex).toNSRange(in: self)
-    }
-    
     func index(of utf16ViewOffset: Int) -> String.Index? {
         
         return String.UTF16View.Index(utf16ViewOffset).samePosition(in: self)
@@ -44,25 +34,4 @@ extension String {
         
         return self.utf16.startIndex.distance(to: index.samePosition(in: self.utf16))
     }
-}
-
-public func +(lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
-    
-    let s = NSMutableAttributedString(attributedString: lhs)
-    s.append(rhs)
-    return s
-}
-
-public func +(lhs: String, rhs: NSAttributedString) -> NSAttributedString {
-    
-    let s = NSMutableAttributedString(string: lhs)
-    s.append(rhs)
-    return s
-}
-
-public func +(lhs: NSAttributedString, rhs: String) -> NSAttributedString {
-    
-    let s = NSMutableAttributedString(attributedString: lhs)
-    s.append(NSAttributedString(string: rhs))
-    return s
 }
