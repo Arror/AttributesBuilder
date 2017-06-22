@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let content = """
         CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
         
-        ✨ ✨ ✨ Github: \(linkStr)
+        ✨+✨+✨ Github: \(linkStr)
         """
         
         let whole = AttributesBuilder {
