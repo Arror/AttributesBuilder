@@ -52,17 +52,17 @@ extension AttributedValueWrapper where Value: NSAttributedString {
         
         let ranges = results.flatMap { $0.range.toRange(in: self.value.string) }
         
-        return self.rendered(by: container, ranges: ranges)
+        return self._rendered(by: container, ranges: ranges)
     }
     
     public func rendered<Container: AttributesContainer>(by container: Container, range: Range<String.Index>? = nil) -> NSAttributedString {
         
         let ranges: [Range<String.Index>] = [range ?? self.value.string.range]
         
-        return self.rendered(by: container, ranges: ranges)
+        return self._rendered(by: container, ranges: ranges)
     }
     
-    func rendered<Container: AttributesContainer>(by container: Container, ranges: [Range<String.Index>] = []) -> NSAttributedString {
+    private func _rendered<Container: AttributesContainer>(by container: Container, ranges: [Range<String.Index>] = []) -> NSAttributedString {
         
         guard !ranges.isEmpty else { return self.value }
         
