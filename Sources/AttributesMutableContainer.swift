@@ -1,13 +1,13 @@
 import Foundation
 
-internal protocol _AttributesContainer: AttributesContainer {
+internal protocol AttributesMutableContainer: AttributesContainer {
     
     var attributes: [NSAttributedStringKey : Any] { get set }
     
     init(attributes: [NSAttributedStringKey: Any])
 }
 
-extension _AttributesContainer {
+extension AttributesMutableContainer {
     
     private init() {
         
@@ -24,7 +24,7 @@ extension _AttributesContainer {
     }
 }
 
-extension _AttributesContainer {
+extension AttributesMutableContainer {
     
     public init(_ initialBlock: (inout Self) -> Void) {
         
@@ -56,7 +56,7 @@ extension NSAttributedString {
     }
 }
 
-extension _AttributesContainer {
+extension AttributesMutableContainer {
     
     // NSFontAttributeName
     public mutating func font(_ font: @autoclosure () -> UIFont) {
