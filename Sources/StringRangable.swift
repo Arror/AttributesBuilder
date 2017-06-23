@@ -25,7 +25,7 @@ extension StringRangable {
     
     var nsRange: NSRange {
         
-        return (self.string.startIndex..<self.string.endIndex).toNSRange(in: self.string)
+        return self.range.toNSRange(in: self.string)
     }
 }
 
