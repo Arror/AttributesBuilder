@@ -34,9 +34,7 @@ extension AttributesRender where Value == String {
         
         let s = NSAttributedString(string: self.value)
         
-        let rs = ranges
-        
-        return s.rs.rendered(by: container, ranges: rs)
+        return s.rs.rendered(by: container, ranges: ranges)
     }
     
     public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
@@ -51,7 +49,7 @@ extension AttributesRender where Value: NSAttributedString {
     
     public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
         
-        return self.rendered(by: container, ranges: [self.value.range])
+        return self.rendered(by: container, ranges: self.value.range)
     }
     
     public func rendered<Container: AttributesContainer>(by container: Container, ranges: Range<String.Index>...) -> NSAttributedString {
