@@ -1,35 +1,31 @@
 import Foundation
 
-protocol StringRangeConvertible {
+protocol StringRangable {
+    
+    var string: String { get }
     
     var range: Range<String.Index> { get }
     
     var nsRange: NSRange { get }
 }
 
-extension String: StringRangeConvertible {
+extension String: StringRangable {
     
-    var range: Range<String.Index> {
-        
-        return self.startIndex..<self.endIndex
-    }
-    
-    var nsRange: NSRange {
-        
-        return (self.startIndex..<self.endIndex).toNSRange(in: self)
-    }
+    var string: String { return self }
 }
 
-extension NSAttributedString: StringRangeConvertible {
+extension NSAttributedString: StringRangable {}
+
+extension StringRangable {
     
     var range: Range<String.Index> {
         
-        return self.string.range
+        return self.string.startIndex..<self.string.endIndex
     }
     
     var nsRange: NSRange {
         
-        return self.string.nsRange
+        return (self.string.startIndex..<self.string.endIndex).toNSRange(in: self.string)
     }
 }
 

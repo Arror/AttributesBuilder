@@ -1,6 +1,6 @@
 import Foundation
 
-public struct AttributedValueWrapper<Value> {
+public struct AttributesRender<Value> {
     
     public let value: Value
     
@@ -16,14 +16,14 @@ public protocol AttributedNamespace {
 
 extension AttributedNamespace {
     
-    public var rs: AttributedValueWrapper<Self> { return AttributedValueWrapper<Self>(self) }
+    public var rs: AttributesRender<Self> { return AttributesRender<Self>(self) }
 }
 
 extension String: AttributedNamespace {}
 
 extension NSAttributedString: AttributedNamespace {}
 
-extension AttributedValueWrapper where Value == String {
+extension AttributesRender where Value == String {
     
     public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
         
@@ -47,7 +47,7 @@ extension AttributedValueWrapper where Value == String {
     }
 }
 
-extension AttributedValueWrapper where Value: NSAttributedString {
+extension AttributesRender where Value: NSAttributedString {
     
     public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
         
