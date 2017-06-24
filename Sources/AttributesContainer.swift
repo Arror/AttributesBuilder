@@ -49,13 +49,13 @@ public protocol AttributesContainer {
     mutating func paragraphStyle(_ style: @autoclosure () -> NSParagraphStyle)
 }
 
-extension AttributesContainer {
+extension Dictionary where Key == NSAttributedStringKey, Value == Any {
     
-    internal func build() -> [NSAttributedStringKey: Any] {
+    var copied: Dictionary {
         
-        var copied = self.attributes
+        var copied = self
         
-        if let style = self.attributes[.paragraphStyle] as? NSParagraphStyle {
+        if let style = self[.paragraphStyle] as? NSParagraphStyle {
             
             style.mutableCopy()
             
