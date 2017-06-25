@@ -11,18 +11,15 @@ let content = """
 CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
 
 ✨+✨+✨ Github: \(linkStr)
-"""
-
-let style = AttributesParagraphStyleBuilder { 
-    $0.lineSpacing(12.0)
-}
-        
-var whole = AttributesBuilder {     
+"""   
+let whole = AttributesBuilder {
+            
     $0.color(.gray)
     $0.font(.systemFont(ofSize: 14.0))
+    $0.paragraphStyle { style in
+        style.lineSpacing = 12.0
+    }
 }
-        
-style.merge(to: &whole)
 
 let link = AttributesBuilder {
     $0.color(.blue)

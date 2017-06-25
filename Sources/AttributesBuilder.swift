@@ -115,11 +115,13 @@ public struct AttributesBuilder {
     
     public mutating func paragraphStyle(_ modifyBlock: (NSMutableParagraphStyle) -> Void) {
         
-        let style = self.storage[.paragraphStyle] as? NSParagraphStyle ?? NSParagraphStyle.default
+        let origin = self.storage[.paragraphStyle] as? NSParagraphStyle ?? NSParagraphStyle.default
         
-        modifyBlock(style.mutableCopy() as! NSMutableParagraphStyle)
+        let style = origin.mutableCopy() as! NSMutableParagraphStyle
         
-        self.storage[.paragraphStyle] = style
+        modifyBlock(style)
+        
+        self.storage[.paragraphStyle] = style.mutableCopy()
     }
 }
 
