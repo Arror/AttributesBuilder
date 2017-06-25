@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol AttributesParagraphStyleContainer {
+public protocol ParagraphStyleContainer {
     
     init(_ initialBlock: (inout Self) -> Void)
     

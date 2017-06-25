@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         ✨+✨+✨ Github: \(linkStr)
         """
         
-        let style = AttributesParagraphStyleBuilder {
+        let style = AttributesBuilder.ParagraphStyleBuilder {
             
             $0.lineSpacing(12.0)
         }

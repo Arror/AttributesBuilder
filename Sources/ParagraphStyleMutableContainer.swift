@@ -1,6 +1,6 @@
 import Foundation
 
-protocol AttributesParagraphStyleMutableContainer: AttributesParagraphStyleContainer {
+protocol ParagraphStyleMutableContainer: ParagraphStyleContainer {
     
     var lineSpacing: CGFloat { get set }
     
@@ -33,7 +33,7 @@ protocol AttributesParagraphStyleMutableContainer: AttributesParagraphStyleConta
     init(nsParagraphStyle: NSParagraphStyle?)
 }
 
-extension AttributesParagraphStyleMutableContainer {
+extension ParagraphStyleMutableContainer {
     
     public init(_ initialBlock: (inout Self) -> Void) {
         
@@ -52,7 +52,7 @@ extension AttributesParagraphStyleMutableContainer {
     }
 }
 
-extension AttributesParagraphStyleMutableContainer {
+extension ParagraphStyleMutableContainer {
     
     mutating public func lineSpacing(_ spacing: @autoclosure () -> CGFloat) {
         self.lineSpacing = spacing()
