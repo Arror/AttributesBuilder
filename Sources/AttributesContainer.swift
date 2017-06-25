@@ -1,9 +1,7 @@
 import Foundation
 
 public protocol AttributesContainer {
-    
-    var attributes: [NSAttributedStringKey : Any] { get }
-    
+        
     init(_ initialBlock: (inout Self) -> Void)
     
     func copy(_ copyBlock: (inout Self) -> Void) -> Self

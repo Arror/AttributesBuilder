@@ -25,39 +25,39 @@ extension NSAttributedString: AttributedNamespace {}
 
 extension AttributesRender where Value == String {
     
-    public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder) -> NSAttributedString {
         
-        return self.value.rs.rendered(by: container, ranges: self.value.range)
+        return self.value.rs.rendered(by: builder, ranges: self.value.range)
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, ranges: Range<String.Index>...) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder, ranges: Range<String.Index>...) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
-        return s.rs.rendered(by: container, ranges: ranges)
+        return s.rs.rendered(by: builder, ranges: ranges)
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         let s = NSAttributedString(string: self.value)
         
-        return s.rs.rendered(by: container, regexPattern: regexPattern, options: options)
+        return s.rs.rendered(by: builder, regexPattern: regexPattern, options: options)
     }
 }
 
 extension AttributesRender where Value: NSAttributedString {
     
-    public func rendered<Container: AttributesContainer>(by container: Container) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder) -> NSAttributedString {
         
-        return self.rendered(by: container, ranges: self.value.range)
+        return self.rendered(by: builder, ranges: self.value.range)
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, ranges: Range<String.Index>...) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder, ranges: Range<String.Index>...) -> NSAttributedString {
         
-        return self.rendered(by: container, ranges: ranges)
+        return self.rendered(by: builder, ranges: ranges)
     }
     
-    public func rendered<Container: AttributesContainer>(by container: Container, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
+    public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
         guard let regex = try? NSRegularExpression(pattern: regexPattern, options: options) else { return self.value }
         
@@ -67,10 +67,10 @@ extension AttributesRender where Value: NSAttributedString {
         
         let ranges = results.flatMap { $0.range.toRange(in: self.value.string) }
         
-        return self.rendered(by: container, ranges: ranges)
+        return self.rendered(by: builder, ranges: ranges)
     }
     
-    private func rendered<Container: AttributesContainer>(by container: Container, ranges: [Range<String.Index>] = []) -> NSAttributedString {
+    private func rendered(by builder: AttributesBuilder, ranges: [Range<String.Index>] = []) -> NSAttributedString {
         
         guard !ranges.isEmpty else { return self.value }
         
@@ -78,7 +78,7 @@ extension AttributesRender where Value: NSAttributedString {
         
         let range = self.value.range
         
-        let attributes = container.attributes.copied
+        let attributes = builder.attributes.copied
         
         ranges.forEach { s.addAttributes(attributes, range: range.clamped(to: $0).toNSRange(in: self.value.string)) }
         
