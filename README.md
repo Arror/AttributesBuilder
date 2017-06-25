@@ -13,15 +13,16 @@ CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
 ✨+✨+✨ Github: \(linkStr)
 """
 
-let whole = AttributesBuilder {
-    
-    let style = NSMutableParagraphStyle()
-    style.lineSpacing = 4.0
-    
+let style = AttributesParagraphStyleBuilder { 
+    $0.lineSpacing(12.0)
+}
+        
+var whole = AttributesBuilder {     
     $0.color(.gray)
     $0.font(.systemFont(ofSize: 14.0))
-    $0.paragraphStyle(style)
 }
+        
+style.merge(to: &whole)
 
 let link = AttributesBuilder {
     $0.color(.blue)
