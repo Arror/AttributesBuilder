@@ -78,7 +78,7 @@ extension AttributesRender where Value: NSAttributedString {
         
         let range = self.value.range
         
-        let attributes = builder.attributes
+        let attributes = builder.attributes.copied
         
         ranges.forEach { s.addAttributes(attributes, range: range.clamped(to: $0).toNSRange(in: self.value.string)) }
         
