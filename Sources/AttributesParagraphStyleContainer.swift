@@ -2,6 +2,10 @@ import Foundation
 
 public protocol AttributesParagraphStyleContainer {
     
+    init(_ initialBlock: (inout Self) -> Void)
+    
+    func copy(_ copyBlock: (inout Self) -> Void) -> Self
+    
     mutating func lineSpacing(_ spacing: @autoclosure () -> CGFloat)
     
     mutating func paragraphSpacing(_ spacing: @autoclosure () -> CGFloat)

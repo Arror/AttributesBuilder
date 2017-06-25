@@ -35,6 +35,25 @@ protocol AttributesParagraphStyleMutableContainer: AttributesParagraphStyleConta
 
 extension AttributesParagraphStyleMutableContainer {
     
+    public init(_ initialBlock: (inout Self) -> Void) {
+        
+        self.init()
+        
+        initialBlock(&self)
+    }
+    
+    public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
+        
+        var copied = self
+        
+        copyBlock(&copied)
+        
+        return copied
+    }
+}
+
+extension AttributesParagraphStyleMutableContainer {
+    
     mutating public func lineSpacing(_ spacing: @autoclosure () -> CGFloat) {
         self.lineSpacing = spacing()
     }
