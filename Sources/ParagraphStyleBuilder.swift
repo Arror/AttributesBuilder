@@ -20,6 +20,13 @@ public struct ParagraphStyleBuilder: AttributesParagraphStyleContainer {
         
         let style = NSParagraphStyle.default
         
+        self.init(nsParagraphStyle: style)
+    }
+    
+    init(nsParagraphStyle: NSParagraphStyle?) {
+        
+        let style = nsParagraphStyle ?? NSParagraphStyle.default
+        
         self.lineSpacing = style.lineSpacing
         self.paragraphSpacing = style.paragraphSpacing
         self.alignment = style.alignment

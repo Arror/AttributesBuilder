@@ -29,6 +29,8 @@ protocol AttributesParagraphStyleMutableContainer: AttributesParagraphStyleConta
     var hyphenationFactor: Float { get set }
     
     init()
+    
+    init(nsParagraphStyle: NSParagraphStyle?)
 }
 
 extension AttributesParagraphStyleMutableContainer {
