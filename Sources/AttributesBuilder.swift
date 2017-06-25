@@ -1,89 +1,152 @@
 import UIKit
 
-public struct AttributesBuilder: AttributesContainer {
+public struct AttributesBuilder {
     
-    public struct ParagraphStyleBuilder: ParagraphStyleContainer {
-        
-        var lineSpacing: CGFloat
-        var paragraphSpacing: CGFloat
-        var alignment: NSTextAlignment
-        var firstLineHeadIndent: CGFloat
-        var headIndent: CGFloat
-        var tailIndent: CGFloat
-        var lineBreakMode: NSLineBreakMode
-        var minimumLineHeight: CGFloat
-        var maximumLineHeight: CGFloat
-        var baseWritingDirection: NSWritingDirection
-        var lineHeightMultiple: CGFloat
-        var paragraphSpacingBefore: CGFloat
-        var hyphenationFactor: Float
-        
-        init() {
-            self.init(nsParagraphStyle: .default)
+    var storage: [NSAttributedStringKey : Any]
+    
+    private init() {
+        self.storage = [:]
+    }
+    
+    private init(attributes: [NSAttributedStringKey : Any]) {
+        self.storage = attributes
+    }
+    
+    private subscript(_ key: NSAttributedStringKey) -> Any? {
+        set {
+            self.storage[key] = newValue
         }
-        
-        init(nsParagraphStyle: NSParagraphStyle?) {
-            
-            let style = nsParagraphStyle ?? NSParagraphStyle.default
-            
-            self.lineSpacing = style.lineSpacing
-            self.paragraphSpacing = style.paragraphSpacing
-            self.alignment = style.alignment
-            self.firstLineHeadIndent = style.firstLineHeadIndent
-            self.headIndent = style.headIndent
-            self.tailIndent = style.tailIndent
-            self.lineBreakMode = style.lineBreakMode
-            self.minimumLineHeight = style.minimumLineHeight
-            self.maximumLineHeight = style.maximumLineHeight
-            self.baseWritingDirection = style.baseWritingDirection
-            self.lineHeightMultiple = style.lineHeightMultiple
-            self.paragraphSpacingBefore = style.paragraphSpacingBefore
-            self.hyphenationFactor = style.hyphenationFactor
+        get {
+            return self.storage[key]
         }
     }
     
-    var attributes: [NSAttributedStringKey : Any]
-}
-
-extension AttributesBuilder.ParagraphStyleBuilder {
-    
-    private var nsParagraphStyle: NSParagraphStyle {
+    public init(_ initialBlock: (inout AttributesBuilder) -> Void) {
         
-        let style = NSMutableParagraphStyle()
+        self.init()
         
-        style.lineSpacing = self.lineSpacing
-        style.paragraphSpacing = self.paragraphSpacing
-        style.alignment = self.alignment
-        style.firstLineHeadIndent = self.firstLineHeadIndent
-        style.headIndent = self.headIndent
-        style.tailIndent = self.tailIndent
-        style.lineBreakMode = self.lineBreakMode
-        style.minimumLineHeight = self.minimumLineHeight
-        style.maximumLineHeight = self.maximumLineHeight
-        style.baseWritingDirection = self.baseWritingDirection
-        style.lineHeightMultiple = self.lineHeightMultiple
-        style.paragraphSpacingBefore = self.paragraphSpacingBefore
-        style.hyphenationFactor = self.hyphenationFactor
-        
-        return style
+        initialBlock(&self)
     }
     
-    public func merge(to attributesBuilder: inout AttributesBuilder) {
+    public func copy(_ copyBlock: (inout AttributesBuilder) -> Void) -> AttributesBuilder {
         
-        attributesBuilder.attributes[.paragraphStyle] = self.nsParagraphStyle
-    }
-    
-    public static func chekout(from attributesBuilder: AttributesBuilder, modifyBlock: (inout AttributesBuilder.ParagraphStyleBuilder) -> Void) -> AttributesBuilder.ParagraphStyleBuilder {
+        var builder = type(of: self).init(attributes: self.storage.copied)
         
-        var builder = AttributesBuilder.ParagraphStyleBuilder(nsParagraphStyle: attributesBuilder.attributes[.paragraphStyle] as? NSParagraphStyle)
-        
-        modifyBlock(&builder)
+        copyBlock(&builder)
         
         return builder
     }
+    
+    public mutating func font(_ font: @autoclosure () -> UIFont) {
+        self[.font] = font()
+    }
+    
+    public mutating func color(_ color: @autoclosure () -> UIColor) {
+        self[.foregroundColor] = color()
+    }
+    
+    public mutating func backgroundColor(_ color: @autoclosure () -> UIColor) {
+        self[.backgroundColor] = color()
+    }
+    
+    public mutating func ligature(_ style: @autoclosure () -> NSAttributedString.LigatureStyle) {
+        self[.ligature] = style().rawValue
+    }
+    
+    public mutating func characterSpacing(_ spacing: @autoclosure () -> CGFloat) {
+        self[.kern] = spacing()
+    }
+    
+    public mutating func strikethroughStyle(_ style: @autoclosure () -> NSUnderlineStyle) {
+        self[.strikethroughStyle] = style()
+    }
+    
+    public mutating func strikethroughColor(_ color: @autoclosure () -> UIColor) {
+        self[.strikethroughColor] = color()
+    }
+    
+    public mutating func underlineStyle(_ style: @autoclosure () -> NSUnderlineStyle) {
+        self[.underlineStyle] = style()
+    }
+    
+    public mutating func underlineColor(_ color: @autoclosure () -> UIColor) {
+        self[.underlineColor] = color()
+    }
+    
+    public mutating func strokeWidth(_ width: @autoclosure () -> CGFloat) {
+        self[.strokeWidth] = width()
+    }
+    
+    public mutating func strokeColor(_ color: @autoclosure () -> UIColor) {
+        self[.strokeColor] = color()
+    }
+    
+    public mutating func shadow(_ value: @autoclosure () -> NSShadow) {
+        self[.shadow] = value()
+    }
+    
+    public mutating func textEffect(_ effect: @autoclosure () -> NSAttributedString.TextEffectStyle) {
+        self[.textEffect] = effect()
+    }
+    
+    public mutating func attachment(_ value: @autoclosure () -> NSTextAttachment) {
+        self[.attachment] = value()
+    }
+    
+    public mutating func link(_ url: @autoclosure () -> URL) {
+        self[.link] = url()
+    }
+    
+    public mutating func baselineOffset(_ offset: @autoclosure () -> CGFloat) {
+        self[.baselineOffset] = offset()
+    }
+    
+    public mutating func obliqueness(_ value: @autoclosure () -> CGFloat) {
+        self[.obliqueness] = value()
+    }
+    
+    public mutating func expansion(_ value: @autoclosure () -> CGFloat) {
+        self[.expansion] = value()
+    }
+    
+    public mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle) {
+        self[.verticalGlyphForm] = style().rawValue
+    }
+    
+    public mutating func paragraphStyle(_ modifyBlock: (NSMutableParagraphStyle) -> Void) {
+        
+        let style = self.storage[.paragraphStyle] as? NSParagraphStyle ?? NSParagraphStyle.default
+        
+        modifyBlock(style.mutableCopy() as! NSMutableParagraphStyle)
+        
+        self.storage[.paragraphStyle] = style
+    }
 }
 
-extension AttributesBuilder: AttributesMutableContainer {}
+extension Dictionary where Key == NSAttributedStringKey, Value == Any {
+    
+    var copied: Dictionary {
+        
+        var c = self
+        
+        if let style = self[.paragraphStyle] as? NSParagraphStyle {
+            
+            c[.paragraphStyle] = style.mutableCopy()
+        }
+        
+        return c
+    }
+}
 
-extension AttributesBuilder.ParagraphStyleBuilder: ParagraphStyleMutableContainer {}
-
+extension NSAttributedString {
+    
+    public enum LigatureStyle: Int {
+        case none       = 0
+        case `default`  = 1
+    }
+    
+    public enum VerticalGlyphFormStyle: Int {
+        case horizontal = 0
+        case vertical   = 1
+    }
+}

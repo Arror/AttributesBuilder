@@ -16,18 +16,14 @@ class ViewController: UIViewController {
         ✨+✨+✨ Github: \(linkStr)
         """
         
-        let style = AttributesBuilder.ParagraphStyleBuilder {
-            
-            $0.lineSpacing(12.0)
-        }
-        
-        var whole = AttributesBuilder {
+        let whole = AttributesBuilder {
             
             $0.color(.gray)
             $0.font(.systemFont(ofSize: 14.0))
+            $0.paragraphStyle { style in
+                style.lineSpacing = 12.0
+            }
         }
-        
-        style.merge(to: &whole)
         
         let link = AttributesBuilder {
             $0.color(.blue)
