@@ -68,9 +68,9 @@ public struct AttributesParagraphStyleBuilder: AttributesParagraphStyleContainer
         attributesBuilder.attributes[.paragraphStyle] = self.nsParagraphStyle
     }
     
-    public static func chekout(from attributesBuilder: AttributesBuilder, modifyBlock: (inout AttributesParagraphStyleBuilder)) -> AttributesParagraphStyleBuilder {
+    public static func chekout(from attributesBuilder: AttributesBuilder, modifyBlock: (inout AttributesParagraphStyleBuilder) -> Void) -> AttributesParagraphStyleBuilder {
         
-        let builder = AttributesParagraphStyleBuilder(nsParagraphStyle: attributesBuilder.attributes[.paragraphStyle] as? NSParagraphStyle)
+        var builder = AttributesParagraphStyleBuilder(nsParagraphStyle: attributesBuilder.attributes[.paragraphStyle] as? NSParagraphStyle)
         
         modifyBlock(&builder)
         

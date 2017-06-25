@@ -12,6 +12,7 @@
 		70054AE71EF16F260009B774 /* AttributesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7D0B01EF16CD4000B4750 /* AttributesBuilderTests.swift */; };
 		701320561EFF683300054086 /* AttributesParagraphStyleContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701320551EFF683300054086 /* AttributesParagraphStyleContainer.swift */; };
 		701320581EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701320571EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift */; };
+		7013205C1EFF78A700054086 /* AttributesParagraphStyleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7013205B1EFF745800054086 /* AttributesParagraphStyleBuilder.swift */; };
 		702E9CE01EF168E200BB1DA7 /* AttributesBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */; };
 		702E9CE71EF168E200BB1DA7 /* AttributesBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		704A9CB61EF799DC003EEC7F /* AttributesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A9CB51EF799DC003EEC7F /* AttributesContainer.swift */; };
@@ -223,6 +224,7 @@
 				7076C00E1EFB38440079F8B2 /* AttributesMutableContainer.swift in Sources */,
 				70054AE31EF16F150009B774 /* AttributesBuilder.swift in Sources */,
 				701320561EFF683300054086 /* AttributesParagraphStyleContainer.swift in Sources */,
+				7013205C1EFF78A700054086 /* AttributesParagraphStyleBuilder.swift in Sources */,
 				704A9CB61EF799DC003EEC7F /* AttributesContainer.swift in Sources */,
 				70054AE51EF16F1C0009B774 /* AttributesRender.swift in Sources */,
 			);
