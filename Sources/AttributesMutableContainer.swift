@@ -152,9 +152,4 @@ extension AttributesMutableContainer {
     public mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle) {
         self[.verticalGlyphForm] = style().rawValue
     }
-    
-    // NSParagraphStyleAttributeName
-    public mutating func paragraphStyle(_ style: @autoclosure () -> NSParagraphStyle) {
-        self[.paragraphStyle] = style()
-    }
 }

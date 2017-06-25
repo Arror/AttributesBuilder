@@ -43,8 +43,6 @@ public protocol AttributesContainer {
     mutating func expansion(_ value: @autoclosure () -> CGFloat)
     
     mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle)
-    
-    mutating func paragraphStyle(_ style: @autoclosure () -> NSParagraphStyle)
 }
 
 extension Dictionary where Key == NSAttributedStringKey, Value == Any {

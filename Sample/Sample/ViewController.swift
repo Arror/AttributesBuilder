@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         
         let whole = AttributesBuilder {
             
-            let style = NSMutableParagraphStyle()
-            style.lineSpacing = 4.0
+            // let style = NSMutableParagraphStyle()
+            // style.lineSpacing = 4.0
             
             $0.color(.gray)
             $0.font(.systemFont(ofSize: 14.0))
-            $0.paragraphStyle(style)
+            // $0.paragraphStyle(style)
         }
         
         let link = AttributesBuilder {
