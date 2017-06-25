@@ -35,7 +35,7 @@ extension AttributesMutableContainer {
     
     public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
-        var builder = type(of: self).init(attributes: self.attributes.copied)
+        var builder = type(of: self).init(attributes: self.attributes)
         
         copyBlock(&builder)
         

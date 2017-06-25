@@ -44,20 +44,3 @@ public protocol AttributesContainer {
     
     mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle)
 }
-
-extension Dictionary where Key == NSAttributedStringKey, Value == Any {
-    
-    var copied: Dictionary {
-        
-        var copied = self
-        
-        if let style = self[.paragraphStyle] as? NSParagraphStyle {
-            
-            style.mutableCopy()
-            
-            copied[.paragraphStyle] = style
-        }
-        
-        return copied
-    }
-}
