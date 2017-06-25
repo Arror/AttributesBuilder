@@ -12,7 +12,6 @@
 		70054AE71EF16F260009B774 /* AttributesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7D0B01EF16CD4000B4750 /* AttributesBuilderTests.swift */; };
 		701320561EFF683300054086 /* AttributesParagraphStyleContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701320551EFF683300054086 /* AttributesParagraphStyleContainer.swift */; };
 		701320581EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701320571EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift */; };
-		7013205A1EFF6F0500054086 /* ParagraphStyleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701320591EFF6F0500054086 /* ParagraphStyleBuilder.swift */; };
 		702E9CE01EF168E200BB1DA7 /* AttributesBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */; };
 		702E9CE71EF168E200BB1DA7 /* AttributesBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		704A9CB61EF799DC003EEC7F /* AttributesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A9CB51EF799DC003EEC7F /* AttributesContainer.swift */; };
@@ -35,7 +34,7 @@
 		70054ADC1EF16E550009B774 /* AttributesRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesRender.swift; sourceTree = "<group>"; };
 		701320551EFF683300054086 /* AttributesParagraphStyleContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesParagraphStyleContainer.swift; sourceTree = "<group>"; };
 		701320571EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesParagraphStyleMutableContainer.swift; sourceTree = "<group>"; };
-		701320591EFF6F0500054086 /* ParagraphStyleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParagraphStyleBuilder.swift; sourceTree = "<group>"; };
+		7013205B1EFF745800054086 /* AttributesParagraphStyleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesParagraphStyleBuilder.swift; sourceTree = "<group>"; };
 		702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttributesBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributesBuilder.h; sourceTree = "<group>"; };
 		702E9CDA1EF168E200BB1DA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,7 +88,7 @@
 			children = (
 				702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */,
 				70054ADB1EF16E550009B774 /* AttributesBuilder.swift */,
-				701320591EFF6F0500054086 /* ParagraphStyleBuilder.swift */,
+				7013205B1EFF745800054086 /* AttributesParagraphStyleBuilder.swift */,
 				701320551EFF683300054086 /* AttributesParagraphStyleContainer.swift */,
 				701320571EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift */,
 				704A9CB51EF799DC003EEC7F /* AttributesContainer.swift */,
@@ -223,7 +222,6 @@
 				701320581EFF685600054086 /* AttributesParagraphStyleMutableContainer.swift in Sources */,
 				7076C00E1EFB38440079F8B2 /* AttributesMutableContainer.swift in Sources */,
 				70054AE31EF16F150009B774 /* AttributesBuilder.swift in Sources */,
-				7013205A1EFF6F0500054086 /* ParagraphStyleBuilder.swift in Sources */,
 				701320561EFF683300054086 /* AttributesParagraphStyleContainer.swift in Sources */,
 				704A9CB61EF799DC003EEC7F /* AttributesContainer.swift in Sources */,
 				70054AE51EF16F1C0009B774 /* AttributesRender.swift in Sources */,
