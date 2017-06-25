@@ -35,7 +35,7 @@ extension AttributesMutableContainer {
     
     public func copy(_ copyBlock: (inout Self) -> Void) -> Self {
         
-        var builder = type(of: self).init(attributes: self.attributes.copied)
+        var builder = type(of: self).init(attributes: self.attributes)
         
         copyBlock(&builder)
         
@@ -151,10 +151,5 @@ extension AttributesMutableContainer {
     // NSVerticalGlyphFormAttributeName
     public mutating func verticalGlyphForm(_ style: @autoclosure () -> NSAttributedString.VerticalGlyphFormStyle) {
         self[.verticalGlyphForm] = style().rawValue
-    }
-    
-    // NSParagraphStyleAttributeName
-    public mutating func paragraphStyle(_ style: @autoclosure () -> NSParagraphStyle) {
-        self[.paragraphStyle] = style()
     }
 }
