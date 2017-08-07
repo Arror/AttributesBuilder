@@ -23,6 +23,20 @@ extension String: AttributedNamespace {}
 
 extension NSAttributedString: AttributedNamespace {}
 
+extension String {
+    
+    var range: Range<String.Index> {
+        return self.startIndex..<self.endIndex
+    }
+}
+
+extension NSAttributedString {
+    
+    var range: Range<String.Index> {
+        return self.string.startIndex..<self.string.endIndex
+    }
+}
+
 extension AttributesRender where Value == String {
     
     public func rendered(by builder: AttributesBuilder) -> NSAttributedString {
@@ -59,13 +73,18 @@ extension AttributesRender where Value: NSAttributedString {
     
     public func rendered(by builder: AttributesBuilder, regexPattern: String, options: NSRegularExpression.Options = []) -> NSAttributedString {
         
-        guard let regex = try? NSRegularExpression(pattern: regexPattern, options: options) else { return self.value }
+        guard
+            let regex = try? NSRegularExpression(pattern: regexPattern, options: options),
+            let nsRange = NSRange(self.value.range, in: self.value.string) else {
+                
+                return self.value
+        }
         
-        let results = regex.matches(in: self.value.string, options: [], range: self.value.nsRange)
+        let results = regex.matches(in: self.value.string, options: [], range: nsRange)
         
         guard !results.isEmpty else { return self.value }
         
-        let ranges = results.flatMap { $0.range.toRange(in: self.value.string) }
+        let ranges = results.flatMap { Range($0.range, in: self.value.string) }
         
         return self.rendered(by: builder, ranges: ranges)
     }
@@ -76,11 +95,15 @@ extension AttributesRender where Value: NSAttributedString {
         
         let s = NSMutableAttributedString(attributedString: self.value)
         
-        let range = self.value.range
-        
         let attributes = builder.storage
         
-        ranges.forEach { s.addAttributes(attributes, range: range.clamped(to: $0).toNSRange(in: self.value.string)) }
+        ranges.forEach {
+            
+            if let r = NSRange(self.value.range.clamped(to: $0), in: self.value.string) {
+                
+                s.addAttributes(attributes, range: r)
+            }
+        }
         
         return s
     }

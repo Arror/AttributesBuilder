@@ -12,7 +12,7 @@
 		70054AE71EF16F260009B774 /* AttributesBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7D0B01EF16CD4000B4750 /* AttributesBuilderTests.swift */; };
 		702E9CE01EF168E200BB1DA7 /* AttributesBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 702E9CD61EF168E200BB1DA7 /* AttributesBuilder.framework */; };
 		702E9CE71EF168E200BB1DA7 /* AttributesBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		704CFFD61EFC240C00EDB06B /* StringRangable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704CFFD51EFC240C00EDB06B /* StringRangable.swift */; };
+		7030C33D1F381900004FAC5D /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7030C33C1F381900004FAC5D /* Range.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +32,7 @@
 		702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributesBuilder.h; sourceTree = "<group>"; };
 		702E9CDA1EF168E200BB1DA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		702E9CDF1EF168E200BB1DA7 /* AttributesBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttributesBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		704CFFD51EFC240C00EDB06B /* StringRangable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringRangable.swift; sourceTree = "<group>"; };
+		7030C33C1F381900004FAC5D /* Range.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Range.swift; sourceTree = "<group>"; };
 		70C7D0B01EF16CD4000B4750 /* AttributesBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributesBuilderTests.swift; sourceTree = "<group>"; };
 		70C7D0B11EF16CD4000B4750 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,7 +79,7 @@
 			children = (
 				702E9CD91EF168E200BB1DA7 /* AttributesBuilder.h */,
 				70054ADB1EF16E550009B774 /* AttributesBuilder.swift */,
-				704CFFD51EFC240C00EDB06B /* StringRangable.swift */,
+				7030C33C1F381900004FAC5D /* Range.swift */,
 				70054ADC1EF16E550009B774 /* AttributesRender.swift */,
 				702E9CDA1EF168E200BB1DA7 /* Info.plist */,
 			);
@@ -204,9 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				704CFFD61EFC240C00EDB06B /* StringRangable.swift in Sources */,
 				70054AE31EF16F150009B774 /* AttributesBuilder.swift in Sources */,
 				70054AE51EF16F1C0009B774 /* AttributesRender.swift in Sources */,
+				7030C33D1F381900004FAC5D /* Range.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
